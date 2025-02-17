@@ -2,10 +2,10 @@
 
 ## CacheIntrus
 
-Référence : adrien_p16_ex2
+Référence : adrien_p16ex2
 
 Exemples à adapter :
-- adrien_p66_ex2
+- adrien_p66ex2
 
 ## EditPhrase
 
