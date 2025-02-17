@@ -36,7 +36,7 @@ MISTRAL_API_KEY=your_api_key_here
 - They must be stored in plain text (and cropped PDF for vision-language model).
 - The file name must be the exercise identifier. (For example, ‘magnardCE2_p19ex5.pdf’ and ‘magnardCE2_p19ex5.txt’).
 
-1. Run the adaptation script:
+2. Run the adaptation script:
 ```bash
 python3 main.py <mistral|pixtral> <adaptation_type> <exercise_id>
 ```
@@ -49,9 +49,6 @@ More models: [https://docs.mistral.ai/getting-started/models/models_overview/](h
 
 Currently supported adaptation types:
 - CacheIntrus
-- EditPhrase
-- RCDouble
-- RCCadre
 
 3. Output data:
 - The output is stored in the ‘html_display’ directory. (e.g. ‘magnardCE2_p19ex5.html’)
