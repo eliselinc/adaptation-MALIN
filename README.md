@@ -40,7 +40,10 @@ MISTRAL_API_KEY=your_api_key_here
 ```bash
 python3 main.py <mistral|pixtral> <adaptation_type> <exercise_id>
 ```
-
+Example:
+```bash
+python3 main.py mistral CacheIntrus adrien_p66ex2
+```
 Available models:
 - "mistral": This will automatically call the ‘mistral-small-latest’ model (default).
 - "pixtral": This will automatically call the ‘pixtral-12b-2409’ model, which supports multimodal text-image input.
