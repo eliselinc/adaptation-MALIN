@@ -7,9 +7,9 @@ from pdf2image import convert_from_path
 from pydantic import BaseModel
 
 from cacheintrus import process_cacheintrus
-from editphrase import process_editphrase
-from rccadre import process_rccadre
-from rcdouble import process_rcdouble
+# from editphrase import process_editphrase
+# from rccadre import process_rccadre
+# from rcdouble import process_rcdouble
 
 from utils import *
 
@@ -79,7 +79,7 @@ def adapt_exercise(ex_id:str, txt_path: str, pdf_path: str,
 def main():
     parser = argparse.ArgumentParser(description="Adapt PDF exercise")
     parser.add_argument("mistral_model", type=str, help="'mistral' (small language model) or 'pixtral' (small vision language model)")
-    parser.add_argument("adaptation_type", type=str, help="Currently supported adaptation types: CacheIntrus, EditPhrase, RCCadre, RCDouble")
+    parser.add_argument("adaptation_type", type=str, help="Currently supported adaptation types: CacheIntrus")#, EditPhrase, RCCadre, RCDouble")
     parser.add_argument("ex_id", type=str)
     # parser.add_argument("pdf_path", type=str, help="Path to the input PDF file")
     # parser.add_argument("txt_path", type=str, help="Path to the input TXT file")
