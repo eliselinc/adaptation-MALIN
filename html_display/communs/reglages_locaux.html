@@ -1,0 +1,35 @@
+<html lang="fr">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>R&eacute;glages locaux des cahiers d'exercice</title>
+	<script src="jquery.js" type="text/javascript" language="javascript"></script>
+	<script type="text/javascript" language="javascript">
+		function changer_reglage_couleurs() {
+			if(localStorage['reglages_cahier_exos_ignorer_couleurs'] == "1") {
+				localStorage['reglages_cahier_exos_ignorer_couleurs'] = "0";
+			} else {
+				localStorage['reglages_cahier_exos_ignorer_couleurs'] = "1";
+			}
+			setval();
+		}
+		function setval() {
+			if(localStorage['reglages_cahier_exos_ignorer_couleurs'] == "1") {
+				$("#val").html("Les textes des exercices seront laiss&eacute;s en noir.");
+			} else {
+				$("#val").html("Les textes des exercices seront mis en couleur.");
+			}
+		}
+		$(function() { setval(); });
+	</script>
+</head>
+<body>
+<div style="width:600px;">Ces r&eacute;glages sont enregistr&eacute;s dans le navigateur et d&eacute;pendent de l'adresse du site visit&eacute;, il peut donc y avoir des valeurs diff&eacute;rentes sur le site en ligne et sur un ordinateur local.</div>
+<br/>
+<div><b><span id="val"></span></b>  <button name="ignorer_couleurs" onclick="changer_reglage_couleurs();">Changer</button></div>
+
+<!-- Hauteur des lignes -->
+<!-- Couleur des nombres -->
+
+
+</body>
+</html>

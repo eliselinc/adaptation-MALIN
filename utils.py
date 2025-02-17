@@ -1,0 +1,130 @@
+import base64
+import io
+from bs4 import BeautifulSoup, NavigableString
+from PIL import Image
+
+def image_to_base64(image: Image.Image, max_size: tuple = (600, 800)) -> str:
+    """Optimized image processing with efficient resizing and compression"""
+    width, height = image.size
+    aspect_ratio = width / height
+    
+    # Calculate target dimensions
+    if width > max_size[0] or height > max_size[1]:
+        if aspect_ratio > 1:
+            new_width = min(width, max_size[0])
+            new_height = int(new_width / aspect_ratio)
+        else:
+            new_height = min(height, max_size[1])
+            new_width = int(new_height * aspect_ratio)
+        
+        image = image.resize((new_width, new_height), Image.Resampling.BILINEAR)
+    
+    if image.mode != 'RGB':
+        image = image.convert('RGB')
+    
+    buffered = io.BytesIO()
+    image.save(buffered, format="JPEG", quality=75, optimize=True)
+    return base64.b64encode(buffered.getvalue()).decode()
+
+
+def custom_pretty_print(soup, indent_level=3, indent_size=4):
+    """Custom pretty print function to format HTML with specific rules for <div> tags."""
+    indent = ' ' * (indent_level * indent_size)
+    formatted_html = ''
+    first_not_div = True
+
+    for child in soup.contents:
+        if isinstance(child, NavigableString):
+            # Add text content with current indentation
+            formatted_html += child.strip()
+        elif child.name == 'div':
+            # Add opening <div> tag with indentation
+            formatted_html += f'\n{indent}<{child.name}'
+            for attr, value in child.attrs.items():
+                if isinstance(value, list):
+                    # Join list values into a space-separated string
+                    formatted_html += f' {attr}="{" ".join(value)}"'
+                else:
+                    formatted_html += f' {attr}="{value}"'
+            formatted_html += '>\n'
+
+            # Recursively format child elements with increased indentation
+            formatted_html += custom_pretty_print(child, indent_level + 1, indent_size)
+            formatted_html += f'\n{indent}</{child.name}>'
+        else:
+            if first_not_div:
+                # First non-div tag goes to a new line
+                formatted_html += f'\n{indent}<{child.name}'
+                for attr, value in child.attrs.items():
+                    if isinstance(value, list):
+                        # Join list values into a space-separated string
+                        formatted_html += f' {attr}="{" ".join(value)}"'
+                    else:
+                        formatted_html += f' {attr}="{value}"'
+                formatted_html += f'>{child.decode_contents()}</{child.name}>'
+                first_not_div = False
+            else:
+                # Subsequent non-div tags stay on the same line without extra spaces
+                formatted_html += f'<{child.name}'
+                for attr, value in child.attrs.items():
+                    if isinstance(value, list):
+                        # Join list values into a space-separated string
+                        formatted_html += f' {attr}="{" ".join(value)}"'
+                    else:
+                        formatted_html += f' {attr}="{value}"'
+                formatted_html += f'>{child.decode_contents()}</{child.name}>'
+
+    return formatted_html
+
+def pretty_print_divs(html_content):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    pretty_html = custom_pretty_print(soup)
+    return pretty_html
+
+
+def wrap_html(content: str, ex_id: str) -> str:
+    if content.startswith("```html") and content.endswith("```"):
+        content = content[10:-3].strip()
+    if content.startswith("```") and content.endswith("```"):
+        content = content[3:-3].strip()
+
+    soup = BeautifulSoup(content, 'html.parser')
+    nb_derniere_page = len(soup.find('div', id='toutes_pages').find_all('div', recursive=False)) if soup.find('div', id='toutes_pages') else 1
+
+    return f"""<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8"><title>{ex_id}</title> <script src="communs/jquery.js" type="text/javascript" language="javascript"></script><link rel="stylesheet" href="communs/classe_cahier.css" /> <script type="text/javascript" language="javascript"> var id_cahier = "iccba3b9046c32de9710a306b39f7ee061";</script><script src="communs/jquery.textnodes.js" type="text/javascript" language="javascript"></script><script src="communs/reglages_locaux.js" type="text/javascript" language="javascript"></script><script src="communs/classe_cahier.js" type="text/javascript" language="javascript"></script><link rel="stylesheet" href="communs/classe_exercice.css" /><script src="communs/jquery.selection.js" type="text/javascript" language="javascript"></script><script src="communs/classe_exercice.js" type="text/javascript" language="javascript"></script><style type="text/css" title="text/css">.exo0 .sel1{{ background:#000000; }}#print .exo0 .sel1{{ border-color:#000000; }}.exo0 .sel2{{ background:#FFC0CB; }}#print .exo0 .sel2{{ border-color:#FFC0CB; }}.exo0 .sel3{{ background:#bbbbff; }}#print .exo0 .sel3{{ border-color:#bbbbff; }}.exo0 .sel4{{ background:#bbffbb; }}#print .exo0 .sel4{{ border-color:#bbffbb; }}.exo0 .sel5{{ background:#bbbbbb; }}#print .exo0 .sel5{{ border-color:#bbbbbb; }}</style><script type="text/javascript" language="javascript"> liste_exercices[0] = {{ id_exo: "exo0", id_type: "id_Exo_mots_a_cocher", couleurs: [11,4,7,8,5], appliquer_couleur_texte: 1, print: 1 }};</script><link rel="stylesheet" href="communs/reglages_locaux.css" type="text/css" media="all"></head>
+<body>
+    <input type="hidden" name="id_cahier_db" class="id_cahier_db" value="96065"/>
+	<div id="page_exo">
+		<div id="cleft"><button id="bleft">&lt;</button></div>
+		<div id="cright"><button id="bright">&gt;</button></div>
+		<!-- BLOC CENTRAL -->
+		<div id="bloc_central">
+{pretty_print_divs(content).rstrip().rstrip('</div>')}
+				<!-- DERNIÈRE PAGE -->
+				<div class="page pagefin" id="p{nb_derniere_page+1}">
+					<div style="display:none;" class="enonce"></div>
+					<div><button class="cahier_bouton_fin" id="cahier_bouton_imprimer" type="button">Imprimer</button></div>
+					<div id="print"></div>
+					<div><button class="cahier_bouton_fin" id="cahier_bouton_fermer" type="button">Quitter l'exercice</button></div>
+					<div><button class="cahier_bouton_fin" id="cahier_bouton_revenir" type="button">Revenir au début de l'exercice</button></div>
+					<div><button class="cahier_bouton_fin" id="cahier_bouton_reset" type="button">Effacer mes réponses</button></div>
+					<div id="debug"></div>
+					<div id="mention_developpe_footnote">Exercices réalisés avec la plateforme des cahiers intéractifs du Cartable Fantastique (laboratoire INSERM/CEA Unicog, www.cartablefantastique.fr).<br/>Ces adaptations ont été approuvées par l'équipe du Cartable Fantastique.</div>
+				</div>
+			</div>
+			<!-- FIN TOUTES PAGES -->
+			<div id="bottom">
+				<button id="fleche"><img src="communs/fleche-jaune.png" /></button>
+				<button id="oups" title="effacer mes modifications" onclick="reset_cette_page()">OUPS</button>
+			</div>
+		</div><!-- fin bloc central -->
+
+	</div><!-- fin de page_exo -->
+		
+	<div id="outer" style="display:none;"></div>
+	<div id="loading"><img src="communs/loading-large.gif" /></div>
+</body>
+</html>
+"""
