@@ -1,0 +1,118 @@
+# HTML - exercice utilisé comme référence : magnardCE2_p19ex5
+
+from PIL import Image
+
+def process_editphrase(mistral_model: str, # mistral ou pixtral
+                       mistral_client,
+                       exercise_image: Image.Image, 
+                       exercise_text: str) -> str:
+
+    first_message = {
+                        "role": "system",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": """You are a textbook exercise adaptation assistant. Your task is to:
+                                1. Carefully identify the elements in the exercise.
+                                2. Transform the exercise into its adapted HTML version. The adaptation consists of an "edit sentence" exercise, where each element is displayed twice: first as a static text on a screen, and second within an editable frame. The student is required to edit the sentence in the frame according to the instruction.
+                                3. Use approriate educational content:
+                                    - Rephrase the instruction according to the example and the new interaction process (e.g. "recopie" becomes "modifie").
+                                    - Do NOT modify the items in the exercice statement.
+                                    - Process all items, 1 item corresponds to 1 HTML page.
+                                    - Do NOT solve the exercise.
+                                    - Double spaces.
+                                4. The format must be similar to this adapted exercise:
+                                    "<div id="enonce" data-classes="lc" class="lc exo0">
+                                        <span class="mot lc">Modifie</span><span class='space'> </span><span class="mot lc">chaque</span><span class='space'> </span><span class="mot lc">phrase</span><span class='space'> </span><span class="mot lc">en</span><span class='space'> </span><span class="mot lc">changeant</span><span class='space'> </span><span class="mot lc">le</span><span class='space'> </span><span class="mot lc">temps.</span>
+                                    </div>
+                        			<div id="toutes_pages">
+                                        <div class="page id_Exo_texte_raccourcis exo0 " id="p1" data-exo="0">
+                                            <input type="hidden" name="id_exo_db" class="id_exo_db" value="152684"/>
+                                            <div class="contenu_page">
+                                                <span class="mot lc">a.</span><span class='space'> </span><span class="mot lc">Les</span><span class='space'> </span><span class="mot lc">douves</span><span class='space'> </span><span class="mot lc">entourent</span><span class='space'> </span><span class="mot lc">le</span><span class='space'> </span><span class="mot lc">château</span><span class='space'> </span><span class="mot lc">fort.</span><br/><span class="mot lc">&rarr;</span><span class='space'> </span>
+                                                <div data-mvt="champ" contentEditable="true" class=" mot champ managed_var lc" id="ix0-1" >Les douves entourent le château fort.</div>
+                                            </div>
+                                        </div>
+                                        <div class="page id_Exo_texte_raccourcis exo0 " id="p2" data-exo="0">
+                                            <input type="hidden" name="id_exo_db" class="id_exo_db" value="152684"/>
+                                            <div class="contenu_page">
+                                                <span class="mot lc">b.</span><span class='space'> </span><span class="mot lc">Le</span><span class='space'> </span><span class="mot lc">pont-levis</span><span class='space'> </span><span class="mot lc">isole</span><span class='space'> </span><span class="mot lc">le</span><span class='space'> </span><span class="mot lc">château.</span><br/><span class="mot lc">&rarr;</span><span class='space'> </span>
+                                                <div data-mvt="champ" contentEditable="true" class=" mot champ managed_var lc" id="ix0-2" >Le pont-levis isole le château.</div>
+                                            </div>
+                                        </div>
+                                        <div class="page id_Exo_texte_raccourcis exo0 " id="p3" data-exo="0">
+                                            <input type="hidden" name="id_exo_db" class="id_exo_db" value="152684"/>
+                                            <div class="contenu_page">
+                                                <span class="mot lc">c.</span><span class='space'> </span><span class="mot lc">Personne</span><span class='space'> </span><span class="mot lc">ne</span><span class='space'> </span><span class="mot lc">pénètre</span><span class='space'> </span><span class="mot lc">dans</span><span class='space'> </span><span class="mot lc">le</span><span class='space'> </span><span class="mot lc">château</span><span class='space'> </span><span class="mot lc">le</span><span class='space'> </span><span class="mot lc">soir.</span><br/><span class="mot lc">&rarr;</span><span class='space'> </span>
+                                                <div data-mvt="champ" contentEditable="true" class=" mot champ managed_var lc" id="ix0-3" >Personne ne pénètre dans le château le soir.</div>
+                                            </div>
+                                        </div>
+                                        <div class="page id_Exo_texte_raccourcis exo0 " id="p4" data-exo="0">
+                                            <input type="hidden" name="id_exo_db" class="id_exo_db" value="152684"/>
+                                            <div class="contenu_page">
+                                                <span class="mot lc">d.</span><span class='space'> </span><span class="mot lc">Les</span><span class='space'> </span><span class="mot lc">soldats</span><span class='space'> </span><span class="mot lc">regardent</span><span class='space'> </span><span class="mot lc">l’ennemi</span><span class='space'> </span><span class="mot lc">à</span><span class='space'> </span><span class="mot lc">travers</span><span class='space'> </span><span class="mot lc">les</span><span class='space'> </span><span class="mot lc">meurtrières.</span><br/><span class="mot lc">&rarr;</span><span class='space'> </span>
+                                                <div data-mvt="champ" contentEditable="true" class=" mot champ managed_var lc" id="ix0-4" >Les soldats regardent l’ennemi à travers les meurtrières.</div>
+                                            </div>
+                                        </div>
+                                    </div>"
+                                5. Use appropriate HTML syntax:
+                                    - Do NOT modify attributes.
+                                    - Do NOT modify class ids.
+                                    - Attributes must be strings separated by spaces, not lists.
+                                    - Every div tag must be closed.
+                                    - It must contain 2 full <div> tags.
+                                6. Return ONLY the raw HTML content without any formatting markers or metadata.
+                                """
+                            }
+                        ]
+                    }
+    
+    # Automate the adaptation of the exercice using Mistral small language model (text-only)
+    if mistral_model == "mistral":
+    
+        messages = [first_message,
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": f"""Adapt this exercise into clean, raw HTML content.
+                                {exercise_text}"""
+                            },
+                        ]
+                    }
+                   ]
+
+        response = mistral_client.chat.complete(
+            model="mistral-small-latest",
+            messages=messages,
+            max_tokens=4000
+        )
+    
+    # Automate the adaptation of the exercice using small Pixtral vision model
+    elif mistral_model == "pixtral":
+    
+        messages = [first_message,
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": f"""Adapt this exercise into clean, raw HTML content.
+                                {exercise_text}"""
+                            },
+                            {
+                                "type": "image_url",
+                                "image_url": f"data:image/jpeg;base64,{exercise_image}"
+                            },
+                        ]
+                    }
+                   ]
+        
+        response = mistral_client.chat.complete(
+            model="pixtral-12b-2409",
+            messages=messages,
+            max_tokens=4000
+        )
+    
+    return response.choices[0].message.content
