@@ -32,25 +32,58 @@ def custom_pretty_print(soup, indent_level=3, indent_size=4):
     indent = ' ' * (indent_level * indent_size)
     formatted_html = ''
     first_not_div = True
+    void_elements = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
 
     for child in soup.contents:
         if isinstance(child, NavigableString):
-            # Add text content with current indentation
+            # Add text content without additional indentation
             formatted_html += child.strip()
         elif child.name == 'div':
-            # Add opening <div> tag with indentation
+            # Check for the special attribute
+            if child.get('data-mvt') == 'champ': # RCCadre champ sur la même ligne
+                # Handle <div> with data-mvt="champ" without new line
+                formatted_html += f'<{child.name}'
+                for attr, value in child.attrs.items():
+                    if isinstance(value, list):
+                        formatted_html += f' {attr}="{" ".join(value)}"'
+                    else:
+                        formatted_html += f' {attr}="{value}"'
+                formatted_html += '>'
+
+                # Check if the div has only text content and no children tags
+                if len(child.contents) == 1 and isinstance(child.contents[0], NavigableString):
+                    formatted_html += child.contents[0].strip()
+                    formatted_html += f'</{child.name}>'
+                else:
+                    formatted_html += custom_pretty_print(child, indent_level, indent_size)
+                    formatted_html += f'</{child.name}>'
+            else:
+                # Add opening <div> tag with indentation
+                formatted_html += f'\n{indent}<{child.name}'
+                for attr, value in child.attrs.items():
+                    if isinstance(value, list):
+                        # Join list values into a space-separated string
+                        formatted_html += f' {attr}="{" ".join(value)}"'
+                    else:
+                        formatted_html += f' {attr}="{value}"'
+                formatted_html += '>'
+                # Check if the div has only text content and no children tags
+                if len(child.contents) == 1 and isinstance(child.contents[0], NavigableString):
+                    formatted_html += child.contents[0].strip()
+                    formatted_html += f'</{child.name}>'
+                else:
+                    # Recursively format child elements with increased indentation
+                    formatted_html += custom_pretty_print(child, indent_level + 1, indent_size)
+                    formatted_html += f'\n{indent}</{child.name}>'
+        elif child.name in void_elements:
+            # Handle void elements (self-closing tags)
             formatted_html += f'\n{indent}<{child.name}'
             for attr, value in child.attrs.items():
                 if isinstance(value, list):
-                    # Join list values into a space-separated string
                     formatted_html += f' {attr}="{" ".join(value)}"'
                 else:
                     formatted_html += f' {attr}="{value}"'
-            formatted_html += '>\n'
-
-            # Recursively format child elements with increased indentation
-            formatted_html += custom_pretty_print(child, indent_level + 1, indent_size)
-            formatted_html += f'\n{indent}</{child.name}>'
+            formatted_html += ' />'
         else:
             if first_not_div:
                 # First non-div tag goes to a new line

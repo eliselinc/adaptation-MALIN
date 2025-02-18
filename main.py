@@ -7,8 +7,8 @@ from pdf2image import convert_from_path
 from pydantic import BaseModel
 
 from cacheintrus import process_cacheintrus
-# from editphrase import process_editphrase
-# from rccadre import process_rccadre
+from editphrase import process_editphrase
+from rccadre import process_rccadre
 # from rcdouble import process_rcdouble
 
 from utils import *
@@ -51,19 +51,22 @@ def adapt_exercise(ex_id:str, txt_path: str, pdf_path: str,
                 mistral_client=mistral_client,
                 exercise_image=exercise_image, 
                 exercise_text=exercise_text)
-        # elif adaptation_type == "EditPhrase":
-        #     html = process_editphrase(
-        #         mistral_model=mistral_model,
-        #         exercise_image=exercise_image, 
-        #         exercise_text=exercise_text)
-        # elif adaptation_type == "RCCadre":
-        #     html = process_rccadre(
-        #         mistral_model=mistral_model,
-        #         exercise_image=exercise_image, 
-        #         exercise_text=exercise_text)
+        elif adaptation_type == "EditPhrase":
+            html = process_editphrase(
+                mistral_model=mistral_model,
+                mistral_client=mistral_client,
+                exercise_image=exercise_image, 
+                exercise_text=exercise_text)
+        elif adaptation_type == "RCCadre":
+            html = process_rccadre(
+                mistral_model=mistral_model,
+                mistral_client=mistral_client,
+                exercise_image=exercise_image, 
+                exercise_text=exercise_text)
         # elif adaptation_type == "RCDouble":
         #     html = process_rcdouble(
         #         mistral_model=mistral_model,
+                # mistral_client=mistral_client,
         #         exercise_image=exercise_image, 
         #         exercise_text=exercise_text)
         else:
