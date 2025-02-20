@@ -1,9 +1,10 @@
 import base64
 import io
+import re
 from bs4 import BeautifulSoup, NavigableString
 from PIL import Image
 
-def image_to_base64(image: Image.Image, max_size: tuple = (600, 800)) -> str:
+def image_to_base64(image:Image.Image, max_size:tuple=(600,800)) -> str:
     """Optimized image processing with efficient resizing and compression"""
     width, height = image.size
     aspect_ratio = width / height
@@ -114,8 +115,41 @@ def pretty_print_divs(html_content):
     pretty_html = custom_pretty_print(soup)
     return pretty_html
 
+def get_page_and_exercise_numbers(ex_id:str) -> str:
+    pattern = re.compile(r'[Pp](\d+)[Ee][Xx](\d+)', re.IGNORECASE)
 
-def wrap_html(content: str, ex_id: str) -> str:
+    match = pattern.search(ex_id)
+
+    if match:
+        page_number = match.group(1)
+        exercise_number = match.group(2)
+        return page_number, exercise_number
+    else:
+        return None, None
+
+def get_id_cahier(ex_id:str) -> str:
+    isbn_dict = {
+        "magnardce2":"978-2-210-50538-4",
+        "adrien":"978-2-210-50208-6",
+        "adrian":"978-2-210-50208-6"
+    }
+
+    isbn = isbn_dict[re.sub(r'[^a-z0-9]', '', ex_id.split("_")[0].lower())]
+
+    page_number, ex_number = get_page_and_exercise_numbers(ex_id)
+    
+    return f"{isbn}_P{page_number}Ex{ex_number}"
+
+def get_title(ex_id: str, ex_text:str, ex_html:str) -> str:
+
+    page_number, ex_number = get_page_and_exercise_numbers(ex_id)
+    return f"P{page_number}Ex{ex_number}"
+    # TODO : ajouter les étoiles
+    stars = get_stars(ex_html=ex_html,
+                      ex_text=ex_text)
+    return f"P{page_number}Ex{ex_number}{stars}"
+
+def wrap_html(content:str, title:str, id_cahier:str) -> str:
     if content.startswith("```html") and content.endswith("```"):
         content = content[10:-3].strip()
     if content.startswith("```") and content.endswith("```"):
@@ -126,7 +160,22 @@ def wrap_html(content: str, ex_id: str) -> str:
 
     return f"""<!DOCTYPE html>
 <html>
-<head><meta http-equiv="content-type" content="text/html; charset=utf-8"><title>{ex_id}</title> <script src="communs/jquery.js" type="text/javascript" language="javascript"></script><link rel="stylesheet" href="communs/classe_cahier.css" /> <script type="text/javascript" language="javascript"> var id_cahier = "iccba3b9046c32de9710a306b39f7ee061";</script><script src="communs/jquery.textnodes.js" type="text/javascript" language="javascript"></script><script src="communs/reglages_locaux.js" type="text/javascript" language="javascript"></script><script src="communs/classe_cahier.js" type="text/javascript" language="javascript"></script><link rel="stylesheet" href="communs/classe_exercice.css" /><script src="communs/jquery.selection.js" type="text/javascript" language="javascript"></script><script src="communs/classe_exercice.js" type="text/javascript" language="javascript"></script><style type="text/css" title="text/css">.exo0 .sel1{{ background:#000000; }}#print .exo0 .sel1{{ border-color:#000000; }}.exo0 .sel2{{ background:#FFC0CB; }}#print .exo0 .sel2{{ border-color:#FFC0CB; }}.exo0 .sel3{{ background:#bbbbff; }}#print .exo0 .sel3{{ border-color:#bbbbff; }}.exo0 .sel4{{ background:#bbffbb; }}#print .exo0 .sel4{{ border-color:#bbffbb; }}.exo0 .sel5{{ background:#bbbbbb; }}#print .exo0 .sel5{{ border-color:#bbbbbb; }}</style><script type="text/javascript" language="javascript"> liste_exercices[0] = {{ id_exo: "exo0", id_type: "id_Exo_mots_a_cocher", couleurs: [11,4,7,8,5], appliquer_couleur_texte: 1, print: 1 }};</script><link rel="stylesheet" href="communs/reglages_locaux.css" type="text/css" media="all"></head>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>{title}</title> 
+    <script src="communs/jquery.js" type="text/javascript" language="javascript"></script>
+    <link rel="stylesheet" href="communs/classe_cahier.css" />
+    <script type="text/javascript" language="javascript"> var id_cahier = "{id_cahier}";</script>
+    <script src="communs/jquery.textnodes.js" type="text/javascript" language="javascript"></script>
+    <script src="communs/reglages_locaux.js" type="text/javascript" language="javascript"></script>
+    <script src="communs/classe_cahier.js" type="text/javascript" language="javascript"></script>
+    <link rel="stylesheet" href="communs/classe_exercice.css" />
+    <script src="communs/jquery.selection.js" type="text/javascript" language="javascript"></script>
+    <script src="communs/classe_exercice.js" type="text/javascript" language="javascript"></script>
+    <style type="text/css" title="text/css">.exo0 .sel1{{ background:#000000; }}#print .exo0 .sel1{{ border-color:#000000; }}.exo0 .sel2{{ background:#FFC0CB; }}#print .exo0 .sel2{{ border-color:#FFC0CB; }}.exo0 .sel3{{ background:#bbbbff; }}#print .exo0 .sel3{{ border-color:#bbbbff; }}.exo0 .sel4{{ background:#bbffbb; }}#print .exo0 .sel4{{ border-color:#bbffbb; }}.exo0 .sel5{{ background:#bbbbbb; }}#print .exo0 .sel5{{ border-color:#bbbbbb; }}</style>
+    <script type="text/javascript" language="javascript"> liste_exercices[0] = {{ id_exo: "exo0", id_type: "id_Exo_mots_a_cocher", couleurs: [11,4,7,8,5], appliquer_couleur_texte: 1, print: 1 }};</script>
+    <link rel="stylesheet" href="communs/reglages_locaux.css" type="text/css" media="all">
+</head>
 <body>
     <input type="hidden" name="id_cahier_db" class="id_cahier_db" value="96065"/>
 	<div id="page_exo">
