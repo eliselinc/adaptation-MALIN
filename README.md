@@ -40,18 +40,19 @@ MISTRAL_API_KEY=your_api_key_here
 ```bash
 python3 main.py <mistral|pixtral> <adaptation_type> <exercise_id>
 ```
-Example:
+Examples:
 ```bash
 python3 main.py mistral CacheIntrus adrien_p66ex2
-```
+
+python3 main.py mistral EditPhrase magnardCE2_p25ex5
+
+python3 main.py mistral RCCadre magnardCE2_p51_ex6```
+
 Available models:
 - "mistral": This will automatically call the ‘mistral-small-latest’ model (default).
 - "pixtral": This will automatically call the ‘pixtral-12b-2409’ model, which supports multimodal text-image input.
 
 More models: [https://docs.mistral.ai/getting-started/models/models_overview/](https://docs.mistral.ai/getting-started/models/models_overview/)
-
-Currently supported adaptation types:
-- CacheIntrus
 
 3. Output data:
 - The output is stored in the ‘html_display’ directory. (e.g. ‘magnardCE2_p19ex5.html’)
