@@ -46,7 +46,8 @@ python3 main.py mistral CacheIntrus adrien_p66ex2
 
 python3 main.py mistral EditPhrase magnardCE2_p25ex5
 
-python3 main.py mistral RCCadre magnardCE2_p51_ex6```
+python3 main.py mistral RCCadre magnardCE2_p51_ex6
+```
 
 Available models:
 - "mistral": This will automatically call the ‘mistral-small-latest’ model (default).
