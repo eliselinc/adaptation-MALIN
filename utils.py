@@ -4,6 +4,8 @@ import re
 from bs4 import BeautifulSoup, NavigableString
 from PIL import Image
 
+from mistral import get_stars
+
 def image_to_base64(image:Image.Image, max_size:tuple=(600,800)) -> str:
     """Optimized image processing with efficient resizing and compression"""
     width, height = image.size
@@ -38,7 +40,7 @@ def custom_pretty_print(soup, indent_level=3, indent_size=4):
     for child in soup.contents:
         if isinstance(child, NavigableString):
             # Add text content without additional indentation
-            formatted_html += child.strip()
+            formatted_html += child.rstrip()
         elif child.name == 'div':
             # Check for the special attribute
             if child.get('data-mvt') == 'champ': # RCCadre champ sur la même ligne
@@ -151,9 +153,13 @@ def get_title(ex_id: str, ex_text:str, ex_html:str) -> str:
 
 def wrap_html(content:str, title:str, id_cahier:str) -> str:
     if content.startswith("```html") and content.endswith("```"):
-        content = content[10:-3].strip()
+        content = content[7:-3].strip()
     if content.startswith("```") and content.endswith("```"):
         content = content[3:-3].strip()
+    if not content.startswith("<div"):
+        print("ERREUR DEBUT DU CODE HTML utils.wrap_html")
+    if not content.rstrip().endswith("</div>"):
+        print("ERREUR FIN DU CODE HTML utils.wrap_html")
 
     soup = BeautifulSoup(content, 'html.parser')
     nb_derniere_page = len(soup.find('div', id='toutes_pages').find_all('div', recursive=False)) if soup.find('div', id='toutes_pages') else 1
