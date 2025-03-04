@@ -180,6 +180,12 @@ body {
 	text-align: justify;
 }
 
+/* doubler l'espace */
+.space {
+    display: inline-block;
+    width: 1.2rem; /* Double l'espace */
+}
+
 /* debug */
 #debug {
 	font-size: 18px;
