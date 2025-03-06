@@ -1,4 +1,5 @@
 import argparse
+import glob
 
 from pdf2image import convert_from_path
 
@@ -56,15 +57,24 @@ def main():
     parser = argparse.ArgumentParser(description="Adapt PDF exercise")
     parser.add_argument("mistral_model", type=str, help="'mistral' (small language model) or 'pixtral' (small vision language model)")
     parser.add_argument("adaptation_type", type=str, help="E.g. CacheIntrus, EditPhrase, RCCadre")
-    parser.add_argument("ex_id", type=str)
+    parser.add_argument("ex_id", type=str, nargs="?", default=None)
     args = parser.parse_args()
 
-    ex_id = args.ex_id
     mistral_model = args.mistral_model
     adaptation_type = args.adaptation_type
-    html = adapt_exercise(ex_id=ex_id,
-                          adaptation_type = adaptation_type,
-                          mistral_model = mistral_model)
+    ex_id = args.ex_id
+
+    if ex_id is None:
+        file_paths = glob.glob("input/CacheIntrus/*.txt")
+        ex_ids = [os.path.splitext(os.path.basename(path))[0] for path in file_paths]
+        for ex_id in ex_ids:  # Utilise ex_id pour passer chaque identifiant
+            html = adapt_exercise(ex_id=ex_id,
+                                  adaptation_type = adaptation_type,
+                                  mistral_model = mistral_model)
+    else:
+        html = adapt_exercise(ex_id=ex_id,
+                              adaptation_type = adaptation_type,
+                              mistral_model = mistral_model)
     # print(html)
 
     # Save output HTML file
