@@ -31,29 +31,39 @@ MISTRAL_API_KEY=your_api_key_here
 
 ## Running
 
-Commande :
+**Commande :**
 ```bash
-python3 main.py <mistral|pixtral> <type_adaptation> <id_exercice>
+python3 main.py <mistral|pixtral> <type_adaptation> <id_exercice>?
 ```
 
-- Exercice à donner en entrée : 
-    - fichier texte `./type_adaptation/id_exercice.txt`
-    - (+ fichier PDF rogné sur l'exercice `./type_adaptation/id_exercice.pdf` pour l'utilisation du modèle vision pixtral).
-
-- Prompt spécifique au type d'adaptation : `./prompts/type_adaptation.txt`
-
-- Sortie HTML : `./html_display/id_exercice.html`
+**Arguments :**
 
 - Modèle : 
     - `mistral`: appelle le modèle `mistral-small-latest` (par défaut).
     - `pixtral`: appelle le modèle `pixtral-12b-2409` qui permet un input multimodal texte-image.
-    - Spécifications : [https://docs.mistral.ai/getting-started/models/models_overview/](https://docs.mistral.ai/getting-started/models/models_overview/)
 
-Exemples d'exécution :
+    Spécifications : [https://docs.mistral.ai/getting-started/models/models_overview/](https://docs.mistral.ai/getting-started/models/models_overview/)
+
+- Type d'adaptation : récupère le prompt spécifique au type d'adaptation : `./prompts/<type_adaptation>.txt`
+
+- Exercice à donner en entrée (argument facultatif) : 
+    - récupère le fichier d'entrée texte `./input/<type_adaptation>/<id_exercice>.txt`
+    - si utilisation du modèle vision pixtral, récupère le fichier d'entrée  PDF rogné sur l'exercice `./input/<type_adaptation>/<id_exercice>.pdf`
+
+    Si aucun id n'est spécifié : traite automatiquement tous les exercices du répertoire `./input/<type_adaptation>/` (`*.txt` pour tous, et `*.pdf` si pixtral)
+
+
+**Sortie :**
+
+- Sortie HTML : `./html_display/<type_adaptation>/<id_exercice>.html`
+
+
+**Exemples d'exécution :**
 ```bash
+python3 main.py mistral CacheIntrus
+
 python3 main.py mistral CacheIntrus adrien_p66ex2
 
 python3 main.py mistral EditPhrase magnardCE2_p25ex5
 
-python3 main.py mistral RCCadre magnardCE2_p51_ex6
-```
+python3 main.py mistral RCCadre magnardCE2_p51_ex6```
