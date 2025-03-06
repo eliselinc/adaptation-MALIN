@@ -1,4 +1,5 @@
 bs4
 pdf2image
 mistralai
+pillow
 python-dotenv

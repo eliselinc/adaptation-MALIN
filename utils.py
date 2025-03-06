@@ -4,7 +4,7 @@ import re
 from bs4 import BeautifulSoup, NavigableString
 from PIL import Image
 
-from mistral import get_stars
+# from mistral import get_stars
 
 def image_to_base64(image:Image.Image, max_size:tuple=(600,800)) -> str:
     """Optimized image processing with efficient resizing and compression"""
