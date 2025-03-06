@@ -42,7 +42,7 @@ def adapt_exercise(ex_id:str,
                                      ex_text=ex_text)
 
         title = get_title(ex_id, ex_text, ex_html)
-        print("Title:",title)
+        # print("Title:",title)
         id_cahier = get_id_cahier(ex_id=ex_id)
         print("Id cahier:",id_cahier)
 
@@ -64,6 +64,7 @@ def main():
     adaptation_type = args.adaptation_type
     ex_id = args.ex_id
 
+    os.makedirs(os.path.dirname(f"html_display/{adaptation_type}/"), exist_ok=True) # Output directory
     if ex_id is None:
         file_paths = glob.glob("input/CacheIntrus/*.txt")
         ex_ids = [os.path.splitext(os.path.basename(path))[0] for path in file_paths]
@@ -73,7 +74,7 @@ def main():
                                   mistral_model = mistral_model)
             # print(html)
             # Save output HTML file
-            html_path = f"html_display/{ex_id}.html" # output path
+            html_path = f"html_display/{adaptation_type}/{ex_id}.html" # output path
             with open(html_path, 'w', encoding='utf-8') as file:
                 file.write(html)
             print(f"HTML content saved to {html_path}")
@@ -83,7 +84,7 @@ def main():
                               mistral_model = mistral_model)
         # print(html)
         # Save output HTML file
-        html_path = f"html_display/{ex_id}.html" # output path
+        html_path = f"html_display/{adaptation_type}/{ex_id}.html" # output path
         with open(html_path, 'w', encoding='utf-8') as file:
             file.write(html)
         print(f"HTML content saved to {html_path}")
