@@ -71,17 +71,22 @@ def main():
             html = adapt_exercise(ex_id=ex_id,
                                   adaptation_type = adaptation_type,
                                   mistral_model = mistral_model)
+            # print(html)
+            # Save output HTML file
+            html_path = f"html_display/{ex_id}.html" # output path
+            with open(html_path, 'w', encoding='utf-8') as file:
+                file.write(html)
+            print(f"HTML content saved to {html_path}")
     else:
         html = adapt_exercise(ex_id=ex_id,
                               adaptation_type = adaptation_type,
                               mistral_model = mistral_model)
-    # print(html)
-
-    # Save output HTML file
-    html_path = f"html_display/{ex_id}.html" # output path
-    with open(html_path, 'w', encoding='utf-8') as file:
-        file.write(html)
-    print(f"HTML content saved to {html_path}")
+        # print(html)
+        # Save output HTML file
+        html_path = f"html_display/{ex_id}.html" # output path
+        with open(html_path, 'w', encoding='utf-8') as file:
+            file.write(html)
+        print(f"HTML content saved to {html_path}")
 
 if __name__ == "__main__":
     main()
