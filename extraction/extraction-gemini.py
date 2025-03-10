@@ -2,9 +2,13 @@ import sys
 import os
 from google import genai
 from pdfminer.high_level import extract_text
+from dotenv import load_dotenv
+load_dotenv()
+
+api_key = os.getenv("gemini_key")
 
 # Initialize Gemini API client
-client = genai.Client(api_key="AIzaSyAHBzsNCXM2QvSUO08xGlUJ-k9bCe1E7Tw")
+client = genai.Client(api_key=api_key)
 
 # Function to extract text from a PDF and save it to a file
 def extract_pdf_text(pdf_filename, output_filename):
