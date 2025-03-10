@@ -131,9 +131,12 @@ def get_page_and_exercise_numbers(ex_id:str) -> str:
 
 def get_id_cahier(ex_id:str) -> str:
     isbn_dict = {
-        "magnardce2":"978-2-210-50538-4",
-        "adrien":"978-2-210-50208-6",
-        "adrian":"978-2-210-50208-6"
+        "magnardce1":"978-2-210-50537-7", "outilspourlefrancaisce1":"978-2-210-50537-7",
+        "magnardce2":"978-2-210-50538-4", "outilspourlefrancaisce2":"978-2-210-50538-4",
+        "magnardcm1":"978-2-210-50535-3", "outilspourlefrancaiscm1":"978-2-210-50535-3",
+        "magnardcm2":"978-2-210-50536-0", "outilspourlefrancaiscm2":"978-2-210-50536-0",
+        "adrien":"978-2-210-50208-6", "adrian":"978-2-210-50208-6",
+        "hachettece2":"2016272090", "aporteedemotsce2":"2016272090",
     }
 
     isbn = isbn_dict[re.sub(r'[^a-z0-9]', '', ex_id.split("_")[0].lower())]

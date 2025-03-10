@@ -52,11 +52,9 @@ python3 main.py <mistral|pixtral> <type_adaptation> <id_exercice>?
 
     Si aucun id n'est spécifié : traite automatiquement tous les exercices du répertoire `./input/<type_adaptation>/` (`*.txt` pour tous, et `*.pdf` si pixtral)
 
-
 **Sortie :**
 
 - Sortie HTML : `./html_display/<type_adaptation>/<id_exercice>.html`
-
 
 **Exemples d'exécution :**
 ```bash

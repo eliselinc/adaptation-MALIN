@@ -1,5 +1,7 @@
 import argparse
 import glob
+import os
+import shutil
 
 from pdf2image import convert_from_path
 
@@ -36,7 +38,6 @@ def adapt_exercise(ex_id:str,
         # Send to mistral or pixtral
         # Use the right prompt according to the adaptation type
         ex_html = process_adaptation(mistral_model=mistral_model,
-                                    #  mistral_client=mistral_client,
                                      first_prompt=first_prompt,
                                      ex_image=ex_image, 
                                      ex_text=ex_text)
@@ -64,17 +65,21 @@ def main():
     adaptation_type = args.adaptation_type
     ex_id = args.ex_id
 
-    os.makedirs(os.path.dirname(f"html_display/{adaptation_type}/"), exist_ok=True) # Output directory
+    # Create output directory
+    output_dir = f"html_display/{adaptation_type}/"
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir, exist_ok=True)
+        shutil.copytree("html_display/communs/", os.path.join(output_dir, "communs"))
+
     if ex_id is None:
-        file_paths = glob.glob("input/CacheIntrus/*.txt")
+        file_paths = glob.glob(f"input/{adaptation_type}/*.txt")
         ex_ids = [os.path.splitext(os.path.basename(path))[0] for path in file_paths]
-        for ex_id in ex_ids:  # Utilise ex_id pour passer chaque identifiant
+        for ex_id in ex_ids:
             html = adapt_exercise(ex_id=ex_id,
                                   adaptation_type = adaptation_type,
                                   mistral_model = mistral_model)
             # print(html)
-            # Save output HTML file
-            html_path = f"html_display/{adaptation_type}/{ex_id}.html" # output path
+            html_path = f"html_display/{adaptation_type}/{ex_id}.html"
             with open(html_path, 'w', encoding='utf-8') as file:
                 file.write(html)
             print(f"HTML content saved to {html_path}")
@@ -83,8 +88,7 @@ def main():
                               adaptation_type = adaptation_type,
                               mistral_model = mistral_model)
         # print(html)
-        # Save output HTML file
-        html_path = f"html_display/{adaptation_type}/{ex_id}.html" # output path
+        html_path = f"html_display/{adaptation_type}/{ex_id}.html"
         with open(html_path, 'w', encoding='utf-8') as file:
             file.write(html)
         print(f"HTML content saved to {html_path}")
