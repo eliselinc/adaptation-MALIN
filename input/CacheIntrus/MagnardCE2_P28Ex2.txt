@@ -1,0 +1,8 @@
+2 Recopie chaque liste de noms
+communs en enlevant l’intrus.
+a. livre ◆ étoile ◆ terre ◆ souris ◆ leur ◆ chat
+b. poule ◆ maison ◆ jardin ◆ armoire ◆ grand
+c. une ◆ plante ◆ loup ◆ table ◆ pelle ◆ seau
+d. algue ◆ mer ◆ situer ◆ plage ◆ lumière ◆ eau
+e. été ◆ vacances ◆ Méditerranée ◆ bord ◆
+port ◆ région

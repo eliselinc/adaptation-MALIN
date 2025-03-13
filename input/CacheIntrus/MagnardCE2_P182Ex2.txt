@@ -1,0 +1,7 @@
+2 Recopie les listes sans intrus.
+Aide-toi d’un dictionnaire.
+a. une marguerite ◆ un coquelicot ◆ un mulot ◆
+un bleuet
+b. le marron ◆ la figue ◆ la noix ◆ la fouine
+c. un blaireau ◆ une musaraigne ◆
+une châtaigne ◆ un campagnol

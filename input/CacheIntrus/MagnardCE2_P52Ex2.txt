@@ -1,0 +1,4 @@
+2 Recopie les listes sans intrus.
+a. est ◆ sommes ◆ suis ◆ somme
+b. ai ◆ avons ◆ à ◆ ont ◆ as
+c. sommes ◆ es ◆ sont ◆ et ◆ est

@@ -1,0 +1,8 @@
+3 Il y a un intrus dans chaque liste.
+Recopie les listes sans l’intrus.
+a. fille • vanille • anguille • ville • cédille
+b. éveil • conseil • orteil • soleil • bouteille
+c. effrayant • sympathique • rayonnage •
+citoyen • aboyer
+d. pierre • varier • craie • science • bientôt
+e. faille • volaille • bail • maille • paille
