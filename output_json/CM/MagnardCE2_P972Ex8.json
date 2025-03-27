@@ -1,0 +1,177 @@
+Voici l'adaptation de l'exercice en JSON brut.
+
+```json
+{
+  "format": "v1",
+  "instructions": {
+    "lines": [
+      {
+        "contents": [
+          {"kind": "text", "text": "Complète"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "les"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "mots"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "avec"},
+          {"kind": "whitespace"},
+          {
+            "kind": "sequence",
+            "contents": [{"kind": "text", "text": "ion"}],
+            "bold": false,
+            "italic": false,
+            "highlighted": null,
+            "boxed": true,
+            "vertical": false
+          },
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "ou"},
+          {"kind": "whitespace"},
+          {
+            "kind": "sequence",
+            "contents": [{"kind": "text", "text": "oin"}],
+            "bold": false,
+            "italic": false,
+            "highlighted": null,
+            "boxed": true,
+            "vertical": false
+          }
+        ]
+      }
+    ]
+  },
+  "wording": {
+    "pages": [
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "a"},
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "cam"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ion"}]},
+                  {"contents": [{"kind": "text", "text": "oin"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "la"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "p"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ion"}]},
+                  {"contents": [{"kind": "text", "text": "oin"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": "ture"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "une"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "opérat"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ion"}]},
+                  {"contents": [{"kind": "text", "text": "oin"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "attent"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ion"}]},
+                  {"contents": [{"kind": "text", "text": "oin"}]}
+                ],
+                "showChoicesByDefault": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "b"},
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "une"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "soustract"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ion"}]},
+                  {"contents": [{"kind": "text", "text": "oin"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "la"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "récréat"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ion"}]},
+                  {"contents": [{"kind": "text", "text": "oin"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "le"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "p"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ion"}]},
+                  {"contents": [{"kind": "text", "text": "oin"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": "g"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "p"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ion"}]},
+                  {"contents": [{"kind": "text", "text": "oin"}]}
+                ],
+                "showChoicesByDefault": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "references": null
+}
+```

@@ -33,7 +33,7 @@ MISTRAL_API_KEY=your_api_key_here
 
 **Commande :**
 ```bash
-python3 main.py <mistral|pixtral> <type_adaptation> <id_exercice>?
+python3 main.py <mistral|pixtral> <type_adaptation> <output_format> <id_exercice>?
 ```
 
 **Arguments :**
@@ -44,7 +44,9 @@ python3 main.py <mistral|pixtral> <type_adaptation> <id_exercice>?
 
     Spécifications : [https://docs.mistral.ai/getting-started/models/models_overview/](https://docs.mistral.ai/getting-started/models/models_overview/)
 
-- Type d'adaptation : récupère le prompt spécifique au type d'adaptation : `./prompts/<type_adaptation>.txt`
+- Type d'adaptation : récupère le prompt spécifique au format et au type d'adaptation demandé : `./prompts_<format>/<type_adaptation>.txt`
+
+- Format de sortie souhaité : `html` ou `json`
 
 - Exercice à donner en entrée (argument facultatif) : 
     - récupère le fichier d'entrée texte `./input/<type_adaptation>/<id_exercice>.txt`
@@ -54,7 +56,9 @@ python3 main.py <mistral|pixtral> <type_adaptation> <id_exercice>?
 
 **Sortie :**
 
-- Sortie HTML : `./html_display/<type_adaptation>/<id_exercice>.html`
+Selon le format demandé :
+- Sortie HTML : `./output_html/<type_adaptation>/<id_exercice>.html`
+- Sortie JSON : `./output_json/<type_adaptation>/<id_exercice>.json`
 
 **Exemples d'exécution :**
 ```bash

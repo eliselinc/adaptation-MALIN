@@ -14,7 +14,8 @@ class AdaptationResponse(BaseModel):
 def process_adaptation(mistral_model: str,
                        first_prompt: str,
                        ex_image: Image.Image, 
-                       ex_text: str) -> str:
+                       ex_text: str,
+                       format: str) -> str:
 
     first_message = {
                         "role": "system",
@@ -25,17 +26,22 @@ def process_adaptation(mistral_model: str,
                             }
                         ]
                     }
-    
+
+    if format == "html":
+        user_prompt_text = "Adapt this exercise into clean, raw HTML content."
+    elif format == "json":
+        user_prompt_text = "Adapt this exercise into clean, raw JSON content."
+
     # Automate the adaptation of the exercice using Mistral small language model (text-only)
     if mistral_model == "mistral":
-    
+
         messages = [first_message,
                     {
                         "role": "user",
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"""Adapt this exercise into clean, raw HTML content.
+                                "text": f"""{user_prompt_text}
                                 {ex_text}"""
                             },
                             # TODO tester si l'envoi de l'exercice en 2e input texte a une influence
@@ -62,7 +68,7 @@ def process_adaptation(mistral_model: str,
                         "content": [
                             {
                                 "type": "text",
-                                "text": f"""Adapt this exercise into clean, raw HTML content.
+                                "text": f"""{user_prompt_text}
                                 {ex_text}"""
                             },
                             {
