@@ -3,7 +3,7 @@ import glob
 import os
 import shutil
 
-# from pdf2image import convert_from_path
+from pdf2image import convert_from_path
 
 from utils import *
 from mistral import *
