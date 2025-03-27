@@ -56,7 +56,7 @@ def process_adaptation(mistral_model: str,
         response = mistral_client.chat.complete(
             model="mistral-small-latest",
             messages=messages,
-            max_tokens=4000
+            # max_tokens=4000
         )
     
     # Automate the adaptation of the exercice using small Pixtral vision model
@@ -82,7 +82,7 @@ def process_adaptation(mistral_model: str,
         response = mistral_client.chat.complete(
             model="pixtral-12b-2409",
             messages=messages,
-            max_tokens=4000
+            # max_tokens=4000
         )
     
     return response.choices[0].message.content

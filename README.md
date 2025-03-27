@@ -61,6 +61,7 @@ Selon le format demandé :
 - Sortie JSON : `./output_json/<type_adaptation>/<id_exercice>.json`
 
 **Exemples d'exécution :**
+
 ```bash
 python3 main.py mistral CM json
 
