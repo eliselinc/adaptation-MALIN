@@ -62,10 +62,12 @@ Selon le format demandé :
 
 **Exemples d'exécution :**
 ```bash
-python3 main.py mistral CacheIntrus
+python3 main.py mistral CM json
 
-python3 main.py mistral CacheIntrus adrien_p66ex2
+python3 main.py mistral CacheIntrus html
 
-python3 main.py mistral EditPhrase magnardCE2_p25ex5
+python3 main.py mistral CacheIntrus html adrien_p66ex2
 
-python3 main.py mistral RCCadre magnardCE2_p51_ex6```
+python3 main.py mistral EditPhrase html magnardCE2_p25ex5
+
+python3 main.py mistral RCCadre html magnardCE2_p51_ex6```
