@@ -30,9 +30,10 @@ python3 convert/convert.py <input_repository> <input_format>
 
 **Arguments :**
 
-- Input repository : 1 textbook repository or 1 global repository that contains subfolders per textbook.
-
+- Input repository : one textbook repository
 - Input format : `cartable` or `patty`
+
+If `cartable`, the input folder contains a `json` subfolder with Cartable .js exercises ; else if `patty`, the input folder contains a `json_patty` folder with Patty .json exercises
 
 **Output :**
 

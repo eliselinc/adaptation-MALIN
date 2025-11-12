@@ -7,19 +7,12 @@ from patty_json_to_html import *
 from cartable_to_patty import *
 
 def extract_page_ex_num(filename: str):
-    """
-    Retourne un tuple (page_num, ex_num) pour trier.
-    """
-    # Extraire le numéro de page
+    # Return tuple (page_num, ex_num) for sorting.
     page_match = re.search(r"[Pp](\d+)", filename)
     page_num = int(page_match.group(1)) if page_match else 0
-
-    # Extraire le numéro d'exercice
     ex_match = re.search(r"[Ee]x(\d+)", filename)
     ex_num = int(ex_match.group(1)) if ex_match else 0
-
     print(page_num, ex_num)
-
     return (page_num, ex_num)
 
 if __name__ == "__main__":
