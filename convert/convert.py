@@ -100,7 +100,8 @@ if __name__ == "__main__":
             chapters=[],  # If you want to group by chapter, adapt here
             exercises=exercises
         )
-        html_global_path = Path(base_output_path, textbook_name, "html_patty", f"{textbook_name}.html")
+        html_global_path = Path(base_output_path, textbook_name, f"{textbook_name}.html")
+        # html_global_path = Path(base_output_path, textbook_name, "html_patty", f"{textbook_name}.html")
         html_global_path.parent.mkdir(parents=True, exist_ok=True)
         with html_global_path.open("w", encoding="utf-8") as f:
             f.write(textbook_to_html(textbook))

@@ -53,9 +53,24 @@ python3 convert/convert.py <input_textbook> <input_format>
 **Example**
 
 ```bash
-python3 convert/convert.py ../data/manuel_CM1_francais cartable
+python3 convert/convert.py ../data/manuel_CM1_francais --input_format cartable
 ```
 
 ```bash
 python3 convert/convert.py ../data/manuel_CM1_francais/textbook.html
+```
+
+**Folder organization**
+
+```bash
+<textbook> repository
+ |
+ ├── *.html : fichiers HTML Cartable
+ ├── json : répertoire de fichiers JS Cartable
+ ├── communs : répertoire de fichiers de style Cartable
+ ├── medias : répertoire des images des exercices Cartable
+ |
+ ├── json_patty : répertoire des exercices individuels Patty JSON
+ ├── html_patty : répertoire des exercices individuels Patty HTML
+ └── <textbook>.html : manuel Patty HTML unique
 ```
