@@ -78,7 +78,7 @@ if __name__ == "__main__":
         assert input_path.joinpath("json_patty").exists(), f"Input path must contain a 'json_patty' subfolder: {input_path}"
         # Input files: .json files in "json_patty" subfolders of textbooks
         # if input_path.joinpath("json_patty").exists():  # Process a single textbook
-        js_files = list(input_path.glob("json_patty/p*.json")) + list(input_path.glob("json_patty/P*.json"))
+        js_files = list(input_path.glob("json_patty/P*.json"))
         base_output_path = input_path.parent
     # js_files = sorted(js_files, key=lambda p: int(re.search(r"P|p(\d+)", p.name).group(1)) if re.search(r"P|p(\d+)", p.name) else 0) # Odre croissant par numéro de page
     js_files = sorted(js_files, key=lambda p: extract_page_ex_num(p.name))
