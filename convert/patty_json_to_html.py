@@ -220,8 +220,8 @@ def textbook_autonomous_html_file_to_directory(input_html_file_name: Path, outpu
 
     os.makedirs(output_directory_name, exist_ok=True)
     for exercise in exercises:
-        with open(os.path.join(output_directory_name, f"{exercise['exerciseId']}.json"), "w") as f:
-            json.dump(exercise["adaptedExercise"], f, ensure_ascii=False, indent=4)
+        with open(os.path.join(output_directory_name, f"{exercise['exerciseId']}.json"), "w", encoding="utf-8") as f:
+            json.dump(exercise["adaptedExercise"], f, ensure_ascii=False, indent=2)
 
 
 def load_exercise(input_path) -> Exercise:
