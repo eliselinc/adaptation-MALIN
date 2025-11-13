@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 from collections import defaultdict
+import os
 import re
 
 from patty_json_to_html import *
@@ -19,13 +20,20 @@ if __name__ == "__main__":
 
     # Arguments parsing
     parser = argparse.ArgumentParser(description="Convert exercises")
-    parser.add_argument("input_path", type=str, help="Repository input path. Contains subfolders per textbook.")
-    parser.add_argument("input_format", type=str, help="cartable or patty", default="cartable")
+    parser.add_argument("input_path", type=str, help="Repository input path, contains subfolders per textbook")
+    parser.add_argument("--input_format", type=str, help="'cartable' or 'patty'", default=None)
     args = parser.parse_args()
 
     input_path = Path(args.input_path)
-    input_format = args.input_format.lower()
-    assert input_format in ["cartable", "patty"], "Input format must be 'cartable' or 'patty'"
+    input_format = args.input_format.lower() if args.input_format else None
+    assert input_format in ["cartable", "patty", None], "Input format must be 'cartable' or 'patty' or None"
+
+    if input_format is None:
+        assert input_path.suffix.lower() == ".html", "If no input format is provided, the input path must be a single HTML textbook file"
+        # Crée un répertoire json_patty
+        output_path = input_path.parent.joinpath("json_patty")
+        textbook_autonomous_html_file_to_directory(input_path, output_path)
+        exit(0)
 
     if input_format == "cartable":
         # Input files : .js files in subdirectories in the json subfolders of Cartable format textbooks
@@ -65,7 +73,7 @@ if __name__ == "__main__":
         if input_format=="cartable":
             json_output_path.parent.mkdir(parents=True, exist_ok=True)
             with json_output_path.open("w", encoding="utf-8") as f:
-                json.dump(exercise.model_dump(mode="json"), f, ensure_ascii=False, indent=4, separators=(",", ":"))
+                json.dump(exercise.model_dump(mode="json"), f, ensure_ascii=False, indent=2, separators=(",", ":"))
             print(f"  JSON saved to {json_output_path}")
         html_output_path.parent.mkdir(parents=True, exist_ok=True)
         with html_output_path.open("w", encoding="utf-8") as f:

@@ -1,7 +1,9 @@
 from __future__ import annotations
 from typing import Any, Literal
+from pathlib import Path
 import hashlib
 import json
+import os
 
 import pydantic
 
@@ -186,6 +188,41 @@ def textbook_to_html(textbook: Textbook | dict[str, Any]) -> str:
     return template.replace(
         "##TO_BE_SUBSTITUTED_TEXTBOOK_EXPORT_DATA##", json.dumps(data).replace("\\", "\\\\").replace('"', '\\"')
     )
+
+
+def adapted_exercises_json_file_to_directory(input_json_file_name: str, output_directory_name: str) -> None:
+    """
+    Convert the file one gets from the "JSON data for adapted exercises" link
+    to the contents of the file one gets from the "JSON/ZIP data for adapted exercises" link.
+    """
+
+    with open(input_json_file_name) as f:
+        exercises = json.load(f)
+
+    os.makedirs(output_directory_name)
+    for exercise in exercises:
+        with open(os.path.join(output_directory_name, f"{exercise['exerciseId']}.json"), "w") as f:
+            json.dump(exercise["adaptedExercise"], f, ensure_ascii=False, indent=2)
+
+
+def textbook_autonomous_html_file_to_directory(input_html_file_name: Path, output_directory_name: Path) -> None:
+    """
+    Convert an autonomous HTML file for a textbook
+    to the contents of the file one gets from the "JSON/ZIP data for adapted exercises" link.
+    """
+
+    with open(input_html_file_name) as f:
+        textbook = f.read()
+
+    start_index = textbook.find('JSON.parse("') + 12
+    textbook = textbook[start_index:].replace('\\"', '"').replace("\\\\", "\\")
+    exercises = json.JSONDecoder().raw_decode(textbook)[0]["exercises"]
+
+    os.makedirs(output_directory_name, exist_ok=True)
+    for exercise in exercises:
+        with open(os.path.join(output_directory_name, f"{exercise['exerciseId']}.json"), "w") as f:
+            json.dump(exercise["adaptedExercise"], f, ensure_ascii=False, indent=4)
+
 
 def load_exercise(input_path) -> Exercise:
     with open(input_path, "r", encoding="utf-8") as f:

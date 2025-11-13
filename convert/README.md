@@ -23,27 +23,39 @@ pip install -r requirements.txt
 
 ## Running
 
-**Commande :**
+**Command**
 ```bash
 python3 convert/convert.py <input_repository> <input_format>
 ```
 
-**Arguments :**
+**Arguments**
 
-- Input repository : one textbook repository
-- Input format : `cartable` or `patty`
+- Input repository : one textbook repository or file
+- Input format : `cartable` or `patty` or `html`
 
-If `cartable`, the input folder contains a `json` subfolder with Cartable .js exercises ; else if `patty`, the input folder contains a `json_patty` folder with Patty .json exercises
+**Cases**
+- If `cartable`: 
+  - The input folder contains a `json` subfolder with Cartable .js exercises
+  - Outputs:
+    - Individual Patty JSON files: `./<textbook>/json_patty/*.json`
+    - Individual Patty HTML files: `./<textbook>/html_patty/*.html`
+    - Global textbook HTML file:`./<textbook>/html_patty/<textbook>.html`
+- If `patty`: 
+  - The input folder contains a `json_patty` folder with Patty .json exercises
+  - Outputs:
+    - Individual Patty HTML files: `./<textbook>/html_patty/*.html`
+    - Global textbook HTML file:`./<textbook>/html_patty/<textbook>.html`
+- If None: 
+  - Input is the independant HTML textbook file in Patty format
+  - Output:
+    - Individual Patty JSON files: `./<textbook>/json_patty/*.json`
 
-**Output :**
-
-For each input textbook:
-- Individual Patty JSON files: `./<textbook>/json_patty/*.json` (if input_format = `cartable`)
-- Individual Patty HTML files: `./<textbook>/html_patty/*.html`
-- Global textbook HTML file:`./<textbook>/html_patty/<textbook>.html`
-
-**Exemple d'exécution :**
+**Example**
 
 ```bash
 python3 convert/convert.py ../data/manuel_CM1_francais cartable
+```
+
+```bash
+python3 convert/convert.py ../data/manuel_CM1_francais/textbook.html html
 ```
