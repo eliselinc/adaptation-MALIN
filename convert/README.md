@@ -62,15 +62,15 @@ python3 convert/convert.py ../data/manuel_CM1_francais/textbook.html
 
 **Folder organization**
 
-```bash
+```yaml
 <textbook> repository
  |
- ├── *.html : fichiers HTML Cartable
- ├── json : répertoire de fichiers JS Cartable
- ├── communs : répertoire de fichiers de style Cartable
- ├── medias : répertoire des images des exercices Cartable
+ ├── *.html             # Cartable HTML files
+ ├── json               # Cartable JSON files
+ ├── communs            # Cartable CSS and style ressources
+ ├── medias             # Images used in Cartable exercises
  |
- ├── json_patty : répertoire des exercices individuels Patty JSON
- ├── html_patty : répertoire des exercices individuels Patty HTML
- └── <textbook>.html : manuel Patty HTML unique
+ ├── json_patty         # Individual Patty JSON files
+ ├── html_patty         # Individual Patty HTML files
+ └── <textbook>.html    # Full textbook, unique Patty HTML file
 ```
