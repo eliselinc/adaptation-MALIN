@@ -211,7 +211,7 @@ def textbook_autonomous_html_file_to_directory(input_html_file_name: Path, outpu
     to the contents of the file one gets from the "JSON/ZIP data for adapted exercises" link.
     """
 
-    with open(input_html_file_name) as f:
+    with open(input_html_file_name, "r", encoding="utf-8") as f:
         textbook = f.read()
 
     start_index = textbook.find('JSON.parse("') + 12
