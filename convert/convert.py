@@ -4,17 +4,45 @@ from collections import defaultdict
 import os
 import re
 
-from patty_json_to_html import *
+from patty_json_to_html_v2 import *
 from cartable_to_patty import *
 
-def extract_page_ex_num(filename: str):
-    # Return tuple (page_num, ex_num) for sorting.
+# =============== Utils ===============
+
+def normalize_filename(raw_name: str) -> str:
+    """
+    Convertit un nom de fichier comme 'P9Ex1_i7rg.js' ou 'P7DefiLangue_hq33.js'
+    en 'P9Ex1.js' ou 'P7ExDefiLangue.js'
+    """
+    # The name is already normalized
+    match = re.match(r"P(\d+)Ex([A-Za-z0-9]+)\.json$", raw_name)
+    if match:
+        return raw_name
+    
+    # # Parse and normalize
+    # match = re.match(r"P(\d+)([A-Za-z0-9]+)_.*\.js$", raw_name)
+    # if not match:
+    #     raise ValueError(f"Unexpected filename : {raw_name}")
+    # p, ex = match.groups()
+    # if ex.startswith("Ex"): ex = ex[2:]
+    match = re.match(r"P([A-Za-z0-9]+)Ex([A-Za-z0-9]+)_.*\.js$", raw_name)
+    p, ex = match.groups()
+    return f"P{p}Ex{ex}.js"
+    # return f"p{p}_ex{ex}.js"
+
+def extract_page_ex_num(filename: str, exname: bool=False):
+    # Return tuple (page_num, ex_num).
     page_match = re.search(r"[Pp](\d+)", filename)
     page_num = int(page_match.group(1)) if page_match else 0
-    ex_match = re.search(r"[Ee]x(\d+)", filename)
-    ex_num = int(ex_match.group(1)) if ex_match else 0
-    print(page_num, ex_num)
+    if exname:
+        ex_match = re.search(r"[Ee]x(\d+|[A-Za-z0-9]+)", filename)
+        ex_num = str(ex_match.group(1)) # For Exercise object
+    else:
+        ex_match = re.search(r"[Ee]x(\d+)", filename)
+        ex_num = int(ex_match.group(1)) if ex_match else 0 # For sorting
     return (page_num, ex_num)
+
+# =============== Main ===============
 
 if __name__ == "__main__":
 
@@ -28,11 +56,13 @@ if __name__ == "__main__":
     input_format = args.input_format.lower() if args.input_format else None
     assert input_format in ["cartable", "patty", None], "Input format must be 'cartable' or 'patty' or None"
 
+
     if input_format is None:
         assert input_path.suffix.lower() == ".html", "If no input format is provided, the input path must be a single HTML textbook file"
         # Crée un répertoire json_patty
         output_path = input_path.parent.joinpath("json_patty")
         textbook_autonomous_html_file_to_directory(input_path, output_path)
+        print(f"\n**** Extracted exercises in {output_path} ****")
         exit(0)
 
     if input_format == "cartable":
@@ -48,11 +78,10 @@ if __name__ == "__main__":
         assert input_path.joinpath("json_patty").exists(), f"Input path must contain a 'json_patty' subfolder: {input_path}"
         # Input files: .json files in "json_patty" subfolders of textbooks
         # if input_path.joinpath("json_patty").exists():  # Process a single textbook
-        js_files = list(input_path.glob("json_patty/p*.json"))
+        js_files = list(input_path.glob("json_patty/p*.json")) + list(input_path.glob("json_patty/P*.json"))
         base_output_path = input_path.parent
     # js_files = sorted(js_files, key=lambda p: int(re.search(r"P|p(\d+)", p.name).group(1)) if re.search(r"P|p(\d+)", p.name) else 0) # Odre croissant par numéro de page
     js_files = sorted(js_files, key=lambda p: extract_page_ex_num(p.name))
-    print(js_files)
 
     textbooks = defaultdict(list)  # Group exercises by textbook name
     errors = []
@@ -63,7 +92,10 @@ if __name__ == "__main__":
             textbook_name = input_path.parts[-3]  # e.g., manuel_CM1_francais_Adrian
             raw_filename = input_path.name  # e.g., P9Ex1_i7rg.js
 
-            normalized_name = normalize_filename(raw_filename)
+            try:
+                normalized_name = normalize_filename(raw_filename)
+            except AttributeError as ve:
+                raise ValueError(f"Filename error, must be P<num>Ex<num/name>.json/js: {raw_filename}")
             if input_format=="cartable": json_output_path = Path(base_output_path, textbook_name, "json_patty", normalized_name.replace(".js", ".json"))
             html_output_path = Path(base_output_path, textbook_name, "html_patty", normalized_name.replace(".json", ".html").replace(".js", ".html"))
 
@@ -83,11 +115,12 @@ if __name__ == "__main__":
             print(f"  HTML saved to {html_output_path}")
 
             # Extract page number and exercise number/name from input file name
-            match = re.match(r"p(\d+)_ex(.+)\.js", normalized_name)
-            if not match:
-                raise ValueError(f"Unexpected file name: {normalized_name} / {raw_filename}")
-            page = int(match.group(1))
-            number = match.group(2)
+            page, number = extract_page_ex_num(normalized_name, exname=True)
+            # match = re.match(r"p(\d+)_ex(.+)\.js", normalized_name)
+            # if not match:
+            #     raise ValueError(f"Unexpected file name: {normalized_name} / {raw_filename}")
+            # page = int(match.group(1))
+            # number = match.group(2)
 
             # Create TextbookExercise object
             textbook_exercise = TextbookExercise(page=page, number=number, exercise=exercise)
@@ -95,8 +128,8 @@ if __name__ == "__main__":
         except ValueError as ve:
             errors.append(input_file_str)
             print(f"  !!! Skipping file due to error: {ve}")
-    print(f"\n**** Converted {len(js_files)} exercises ****")
-    print(f"**** Errors: {errors}")
+    print(f"\n**** Converted {len(js_files)-len(errors)} exercises ****")
+    print(f"**** {len(errors)} errors: {errors}")
 
     # Generate unique HTML for each textbook
     for textbook_name, exercises in textbooks.items():

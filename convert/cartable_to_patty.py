@@ -27,8 +27,8 @@ import json
 import re
 from collections import defaultdict
 from pathlib import Path
-from patty_json_to_html import exercise_to_html, textbook_to_html #json_to_html
-from patty_json_to_html import *
+from patty_json_to_html_v2 import exercise_to_html, textbook_to_html #json_to_html
+from patty_json_to_html_v2 import *
 # import (
 #     BaseModel, Exercise, Pages, Text, Whitespace, 
 #     EditableTextInput, 
@@ -390,7 +390,7 @@ def parse_example(example: list) -> ExampleComponent:
 # Première page non éditable, cf Adrian p13ex7 
 # Première page non éditable, avec "Exemple :" sur une ligne seule cf Adrian p15ex9
 
-def parse_statement(pages_raw: list, html_colors) -> StatementPages:
+def parse_statement(pages_raw: list, html_colors) -> StatementPagesV1:
     pages = []
     for page_index, (_, content_list) in enumerate(pages_raw):
         lines = []
@@ -441,7 +441,7 @@ def parse_statement(pages_raw: list, html_colors) -> StatementPages:
         lines = filter_lines(lines)
         # print("DEBUG LINES AFTER FILTER:", lines)
         pages.append(StatementPage(lines=lines))
-    return StatementPages(pages=pages)
+    return StatementPagesV1(pages=pages)
 
 def parse_exposant(item):
     # item = ["exposant", ["^re", "re"]]
@@ -586,26 +586,3 @@ def convert_file(input_path: Path) -> Exercise:
     clean_exercise_whitespace(exercise)
     simplify_formatted_blocks(exercise)
     return exercise
-
-# =============== Utils ===============
-
-def normalize_filename(raw_name: str) -> str:
-    """
-    Convertit un nom de fichier comme 'P9Ex1_i7rg.js' ou 'P7DefiLangue_hq33.js'
-    en 'P9Ex1.js' ou 'P7ExDefiLangue.js'
-    OU
-    en 'p9_ex1.js' ou 'p7_exDefiLangue.js'
-    """
-    # The name is already normalized
-    match = re.match(r"p(\d+)_ex([A-Za-z0-9]+)\.json$", raw_name)
-    if match:
-        return raw_name
-    
-    # Parse and normalize
-    match = re.match(r"P(\d+)([A-Za-z0-9]+)_.*\.js$", raw_name)
-    if not match:
-        raise ValueError(f"Unexpected filename : {raw_name}")
-    p, ex = match.groups()
-    if ex.startswith("Ex"): ex = ex[2:]
-    # return f"P{p}Ex{ex}.js"
-    return f"p{p}_ex{ex}.js"
