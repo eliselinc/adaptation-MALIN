@@ -15,7 +15,7 @@ def normalize_filename(raw_name: str) -> str:
     en 'P9Ex1.js' ou 'P7ExDefiLangue.js'
     """
     # The name is already normalized
-    match = re.match(r"P(\d+)Ex([A-Za-z0-9]+)\.json$", raw_name)
+    match = re.match(r"P(\d+)E[Xx]([A-Za-z0-9]+)\.json$", raw_name)
     if match:
         return raw_name
     
@@ -25,7 +25,7 @@ def normalize_filename(raw_name: str) -> str:
     #     raise ValueError(f"Unexpected filename : {raw_name}")
     # p, ex = match.groups()
     # if ex.startswith("Ex"): ex = ex[2:]
-    match = re.match(r"P([A-Za-z0-9]+)Ex([A-Za-z0-9]+)_.*\.js$", raw_name)
+    match = re.match(r"P([A-Za-z0-9]+)E[Xx]([A-Za-z0-9]+)_.*\.js$", raw_name)
     p, ex = match.groups()
     return f"P{p}Ex{ex}.js"
     # return f"p{p}_ex{ex}.js"
@@ -62,7 +62,7 @@ if __name__ == "__main__":
         # Crée un répertoire json_patty
         output_path = input_path.parent.joinpath("json_patty")
         textbook_autonomous_html_file_to_directory(input_path, output_path)
-        print(f"\n**** Extracted exercises in {output_path} ****")
+        print(f"\n**** Extracted exercises in {output_path}")
         exit(0)
 
     if input_format == "cartable":
@@ -128,7 +128,7 @@ if __name__ == "__main__":
         except ValueError as ve:
             errors.append(input_file_str)
             print(f"  !!! Skipping file due to error: {ve}")
-    print(f"\n**** Converted {len(js_files)-len(errors)} exercises ****")
+    print(f"\n**** Converted {len(js_files)-len(errors)} exercises")
     print(f"**** {len(errors)} errors: {errors}")
 
     # Generate unique HTML for each textbook
