@@ -55,6 +55,7 @@ if __name__ == "__main__":
     print(js_files)
 
     textbooks = defaultdict(list)  # Group exercises by textbook name
+    errors = []
     for input_file_str in js_files:
         print(f"\nProcessing {input_file_str}")
         try:
@@ -92,8 +93,10 @@ if __name__ == "__main__":
             textbook_exercise = TextbookExercise(page=page, number=number, exercise=exercise)
             textbooks[textbook_name].append(textbook_exercise)
         except ValueError as ve:
+            errors.append(input_file_str)
             print(f"  !!! Skipping file due to error: {ve}")
     print(f"\n**** Converted {len(js_files)} exercises ****")
+    print(f"**** Errors: {errors}")
 
     # Generate unique HTML for each textbook
     for textbook_name, exercises in textbooks.items():
