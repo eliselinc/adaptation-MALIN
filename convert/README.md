@@ -25,13 +25,13 @@ pip install -r requirements.txt
 
 **Command**
 ```bash
-python3 convert/convert.py <input_repository> <input_format>
+python3 convert/convert.py <input_textbook> <input_format>
 ```
 
 **Arguments**
 
-- Input repository : one textbook repository or file
-- Input format : `cartable` or `patty` or `html`
+- Input textbook: one textbook repository or file
+- Input format: `cartable` or `patty` (or None)
 
 **Cases**
 - If `cartable`: 
@@ -57,5 +57,5 @@ python3 convert/convert.py ../data/manuel_CM1_francais cartable
 ```
 
 ```bash
-python3 convert/convert.py ../data/manuel_CM1_francais/textbook.html html
+python3 convert/convert.py ../data/manuel_CM1_francais/textbook.html
 ```
