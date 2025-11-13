@@ -35,10 +35,10 @@ def extract_page_ex_num(filename: str, exname: bool=False):
     page_match = re.search(r"[Pp](\d+)", filename)
     page_num = int(page_match.group(1)) if page_match else 0
     if exname:
-        ex_match = re.search(r"[Ee]x(\d+|[A-Za-z0-9]+)", filename)
+        ex_match = re.search(r"[Ee][Xx](\d+|[A-Za-z0-9]+)", filename)
         ex_num = str(ex_match.group(1)) # For Exercise object
     else:
-        ex_match = re.search(r"[Ee]x(\d+)", filename)
+        ex_match = re.search(r"[Ee][Xx](\d+)", filename)
         ex_num = int(ex_match.group(1)) if ex_match else 0 # For sorting
     return (page_num, ex_num)
 
