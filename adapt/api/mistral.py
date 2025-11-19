@@ -17,12 +17,17 @@ class MistralAPI:
             raise ValueError("Missing MISTRAL_API_KEY in environment.")
         self.client = Mistral(api_key=api_key)
 
-    def process_adaptation(mistral_model: str,
-                        first_prompt: str,
-                        ex_image: Image.Image, 
-                        ex_text: str,
-                        format: str) -> str:
+    def process_adaptation(
+            self,
+            model: str,
+            first_prompt: str,
+            input_image: Image.Image, 
+            input_text: str,
+            format: str,
+            examples: list[tuple[str, str]] | None = None,
+    ) -> str:
 
+        # SYSTEM MESSAGE
         first_message = {
                             "role": "system",
                             "content": [
@@ -34,61 +39,69 @@ class MistralAPI:
                         }
 
         if format == "html":
-            user_prompt_text = "Adapt this exercise into clean, raw HTML content."
+            user_prompt_text = "Adapt this exercise into clean, raw HTML content:\n"
         elif format == "json":
-            user_prompt_text = "Adapt this exercise into clean, raw JSON content."
+            user_prompt_text = "Adapt this exercise into clean, raw JSON content:\n"
+        else:
+            raise ValueError(f"Unknown format: {format} ; must be 'html' or 'json'.")
 
-        # Automate the adaptation of the exercice using Mistral small language model (text-only)
-        if mistral_model == "mistral":
+        # FEW-SHOT CONSTRUCTION
+        fewshot_messages = []
+        if examples:
+            for input, output in examples:
+                fewshot_messages.extend([
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "text", "text": f"{user_prompt_text}{input}"}
+                        ],
+                    },
+                    {
+                        "role": "assistant",
+                        "content": [
+                            {"type": "text", "text": f"{output}"}
+                        ],
+                    }
+                ])
 
-            messages = [first_message,
-                        {
-                            "role": "user",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "text": f"""{user_prompt_text}
-                                    {ex_text}"""
-                                },
-                                # TODO tester si l'envoi de l'exercice en 2e input texte a une influence
-                                # {
-                                #     "type": "text",
-                                #     "text": ex_text
-                                # }
-                            ]
-                        }
-                    ]
+        # USER MESSAGE
+        target_user_message = {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": f"{user_prompt_text}{input_text}" 
+                    # TODO tester si l'envoi de l'exercice en 2e input texte a une influence
+                }
+            ]
+        }
 
-            response = mistral_client.chat.complete(
+        # If vision model, attach image
+        if model == "pixtral":
+            # encode image ?
+            target_user_message["content"].append(
+                {
+                    "type": "image_url",
+                    "image_url": f"data:image/jpeg;base64,{input_image}"
+                }
+            )
+        
+        # MESSAGE SEQUENCE
+        messages = [first_message] + fewshot_messages + [target_user_message]
+
+        # CALL MODEL
+        if model == "mistral":
+            response = self.client.chat.complete(
                 model="mistral-small-latest",
                 messages=messages,
                 # max_tokens=4000
             )
-        
-        # Automate the adaptation of the exercice using small Pixtral vision model
-        elif mistral_model == "pixtral":
-        
-            messages = [first_message,
-                        {
-                            "role": "user",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "text": f"""{user_prompt_text}
-                                    {ex_text}"""
-                                },
-                                {
-                                    "type": "image_url",
-                                    "image_url": f"data:image/jpeg;base64,{ex_image}"
-                                },
-                            ]
-                        }
-                    ]
-            
-            response = mistral_client.chat.complete(
+        elif model == "pixtral":
+            response = self.client.chat.complete(
                 model="pixtral-12b-2409",
                 messages=messages,
-                # max_tokens=4000
             )
+        else:
+            raise ValueError(f"Unknown model: {model} ; must be 'mistral' or 'pixtral'.")
         
         return response.choices[0].message.content
