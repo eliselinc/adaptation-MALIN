@@ -1,6 +1,8 @@
 # Conversion
 
-Convertir des exercices ou manuels adaptés
+Convertir des exercices ou manuels adaptés d'un format à l'autre :
+- Cartable (Cahiers Fantastiques)
+- MALIN
 
 ## Running
 

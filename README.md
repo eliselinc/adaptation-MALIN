@@ -1,5 +1,7 @@
 # adaptation-MALIN
 
+Dans le cadre du projet ANR MALIN pour l'accessibilité des manuels scolaires, ce repo contient les codes pour la transformation d'un exercice extrait en sa version adaptée à la dyspraxie.
+
 ## Adaptation → [adapt](https://github.com/eliselinc/adaptation-MALIN/tree/main/adapt)
 
 Adaptation d'un exercice de manuel scolaire en sa version adaptée avec les LLM (API Mistral ou Gemini).
@@ -7,7 +9,6 @@ Adaptation d'un exercice de manuel scolaire en sa version adaptée avec les LLM 
 ## Conversion → [convert](https://github.com/eliselinc/adaptation-MALIN/tree/main/convert)
 
 Conversion d'un exercice adapté d'une version à l'autre.
-
 
 ## Setup
 
