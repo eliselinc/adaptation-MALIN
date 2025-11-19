@@ -1,6 +1,0 @@
-3 Recopie chaque liste en supprimant
-le mot qui n’est pas formé d’un radical
-et d’un suffixe.
-a. habitation ◆ aviation ◆ parution ◆ pion
-b. mûre ◆ toiture ◆ rayure ◆ reliure ◆ égratignure
-c. lavoir ◆ rasoir ◆ accoudoir ◆ arrosoir ◆ bonsoir

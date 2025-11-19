@@ -1,0 +1,6 @@
+3 Dans chaque liste, un mot n’est pas
+l’antonyme du mot en gras. Écris les listes
+sans intrus.
+a. joyeux : triste ◆ maussade ◆ simple ◆ sombre
+b. dur : mou ◆ tendre ◆ jovial ◆ souple ◆ moelleux
+c. propre : salé ◆ taché ◆ sale ◆ malpropre ◆ sali

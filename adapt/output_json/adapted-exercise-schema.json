@@ -1,0 +1,429 @@
+{
+  "$defs": {
+    "AnySequence": {
+      "properties": {
+        "kind": {
+          "const": "sequence",
+          "title": "Kind",
+          "type": "string"
+        },
+        "contents": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Text"
+              },
+              {
+                "$ref": "#/$defs/Whitespace"
+              },
+              {
+                "$ref": "#/$defs/Arrow"
+              },
+              {
+                "$ref": "#/$defs/FreeTextInput"
+              },
+              {
+                "$ref": "#/$defs/MultipleChoicesInput"
+              },
+              {
+                "$ref": "#/$defs/SelectableInput"
+              },
+              {
+                "$ref": "#/$defs/AnySequence"
+              }
+            ]
+          },
+          "title": "Contents",
+          "type": "array"
+        },
+        "bold": {
+          "title": "Bold",
+          "type": "boolean"
+        },
+        "italic": {
+          "title": "Italic",
+          "type": "boolean"
+        },
+        "highlighted": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Highlighted"
+        },
+        "boxed": {
+          "title": "Boxed",
+          "type": "boolean"
+        },
+        "vertical": {
+          "title": "Vertical",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "contents",
+        "bold",
+        "italic",
+        "highlighted",
+        "boxed",
+        "vertical"
+      ],
+      "title": "AnySequence",
+      "type": "object"
+    },
+    "Arrow": {
+      "properties": {
+        "kind": {
+          "const": "arrow",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "Arrow",
+      "type": "object"
+    },
+    "FreeTextInput": {
+      "properties": {
+        "kind": {
+          "const": "freeTextInput",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "FreeTextInput",
+      "type": "object"
+    },
+    "Line_Union_Text__Whitespace__Arrow__FreeTextInput__MultipleChoicesInput__SelectableInput__AnySequence__": {
+      "properties": {
+        "contents": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Text"
+              },
+              {
+                "$ref": "#/$defs/Whitespace"
+              },
+              {
+                "$ref": "#/$defs/Arrow"
+              },
+              {
+                "$ref": "#/$defs/FreeTextInput"
+              },
+              {
+                "$ref": "#/$defs/MultipleChoicesInput"
+              },
+              {
+                "$ref": "#/$defs/SelectableInput"
+              },
+              {
+                "$ref": "#/$defs/AnySequence"
+              }
+            ]
+          },
+          "title": "Contents",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contents"
+      ],
+      "title": "Line[Union[Text, Whitespace, Arrow, FreeTextInput, MultipleChoicesInput, SelectableInput, AnySequence]]",
+      "type": "object"
+    },
+    "Line_Union_Text__Whitespace__Arrow__PassiveSequence__": {
+      "properties": {
+        "contents": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Text"
+              },
+              {
+                "$ref": "#/$defs/Whitespace"
+              },
+              {
+                "$ref": "#/$defs/Arrow"
+              },
+              {
+                "$ref": "#/$defs/PassiveSequence"
+              }
+            ]
+          },
+          "title": "Contents",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contents"
+      ],
+      "title": "Line[Union[Text, Whitespace, Arrow, PassiveSequence]]",
+      "type": "object"
+    },
+    "MultipleChoicesInput": {
+      "properties": {
+        "kind": {
+          "const": "multipleChoicesInput",
+          "title": "Kind",
+          "type": "string"
+        },
+        "choices": {
+          "items": {
+            "$ref": "#/$defs/Line_Union_Text__Whitespace__Arrow__PassiveSequence__"
+          },
+          "title": "Choices",
+          "type": "array"
+        },
+        "showChoicesByDefault": {
+          "title": "Showchoicesbydefault",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "choices",
+        "showChoicesByDefault"
+      ],
+      "title": "MultipleChoicesInput",
+      "type": "object"
+    },
+    "Page_Union_Text__Whitespace__Arrow__FreeTextInput__MultipleChoicesInput__SelectableInput__AnySequence__": {
+      "properties": {
+        "lines": {
+          "items": {
+            "$ref": "#/$defs/Line_Union_Text__Whitespace__Arrow__FreeTextInput__MultipleChoicesInput__SelectableInput__AnySequence__"
+          },
+          "title": "Lines",
+          "type": "array"
+        }
+      },
+      "required": [
+        "lines"
+      ],
+      "title": "Page[Union[Text, Whitespace, Arrow, FreeTextInput, MultipleChoicesInput, SelectableInput, AnySequence]]",
+      "type": "object"
+    },
+    "Page_Union_Text__Whitespace__Arrow__PassiveSequence__": {
+      "properties": {
+        "lines": {
+          "items": {
+            "$ref": "#/$defs/Line_Union_Text__Whitespace__Arrow__PassiveSequence__"
+          },
+          "title": "Lines",
+          "type": "array"
+        }
+      },
+      "required": [
+        "lines"
+      ],
+      "title": "Page[Union[Text, Whitespace, Arrow, PassiveSequence]]",
+      "type": "object"
+    },
+    "Pages_Union_Text__Whitespace__Arrow__FreeTextInput__MultipleChoicesInput__SelectableInput__AnySequence__": {
+      "properties": {
+        "pages": {
+          "items": {
+            "$ref": "#/$defs/Page_Union_Text__Whitespace__Arrow__FreeTextInput__MultipleChoicesInput__SelectableInput__AnySequence__"
+          },
+          "title": "Pages",
+          "type": "array"
+        }
+      },
+      "required": [
+        "pages"
+      ],
+      "title": "Pages[Union[Text, Whitespace, Arrow, FreeTextInput, MultipleChoicesInput, SelectableInput, AnySequence]]",
+      "type": "object"
+    },
+    "PassiveSequence": {
+      "properties": {
+        "kind": {
+          "const": "sequence",
+          "title": "Kind",
+          "type": "string"
+        },
+        "contents": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Text"
+              },
+              {
+                "$ref": "#/$defs/Whitespace"
+              },
+              {
+                "$ref": "#/$defs/Arrow"
+              },
+              {
+                "$ref": "#/$defs/PassiveSequence"
+              }
+            ]
+          },
+          "title": "Contents",
+          "type": "array"
+        },
+        "bold": {
+          "title": "Bold",
+          "type": "boolean"
+        },
+        "italic": {
+          "title": "Italic",
+          "type": "boolean"
+        },
+        "highlighted": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Highlighted"
+        },
+        "boxed": {
+          "title": "Boxed",
+          "type": "boolean"
+        },
+        "vertical": {
+          "title": "Vertical",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "contents",
+        "bold",
+        "italic",
+        "highlighted",
+        "boxed",
+        "vertical"
+      ],
+      "title": "PassiveSequence",
+      "type": "object"
+    },
+    "SelectableInput": {
+      "properties": {
+        "kind": {
+          "const": "selectableInput",
+          "title": "Kind",
+          "type": "string"
+        },
+        "contents": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Text"
+              },
+              {
+                "$ref": "#/$defs/Whitespace"
+              },
+              {
+                "$ref": "#/$defs/Arrow"
+              },
+              {
+                "$ref": "#/$defs/PassiveSequence"
+              }
+            ]
+          },
+          "title": "Contents",
+          "type": "array"
+        },
+        "colors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Colors",
+          "type": "array"
+        },
+        "boxed": {
+          "title": "Boxed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "contents",
+        "colors",
+        "boxed"
+      ],
+      "title": "SelectableInput",
+      "type": "object"
+    },
+    "Text": {
+      "properties": {
+        "kind": {
+          "const": "text",
+          "title": "Kind",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "text"
+      ],
+      "title": "Text",
+      "type": "object"
+    },
+    "Whitespace": {
+      "properties": {
+        "kind": {
+          "const": "whitespace",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "Whitespace",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "format": {
+      "const": "v1",
+      "title": "Format",
+      "type": "string"
+    },
+    "instructions": {
+      "$ref": "#/$defs/Page_Union_Text__Whitespace__Arrow__PassiveSequence__"
+    },
+    "wording": {
+      "$ref": "#/$defs/Pages_Union_Text__Whitespace__Arrow__FreeTextInput__MultipleChoicesInput__SelectableInput__AnySequence__"
+    },
+    "references": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Line_Union_Text__Whitespace__Arrow__PassiveSequence__"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "format",
+    "instructions",
+    "wording",
+    "references"
+  ],
+  "title": "AdaptedExercise",
+  "type": "object"
+}

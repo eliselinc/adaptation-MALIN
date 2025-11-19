@@ -1,0 +1,9 @@
+2 Dans chaque liste, un mot ne
+contient pas le son [ j]. Écris les listes
+sans intrus.
+a. la rouille ◆ les fouilles ◆ il mouille ◆ le moule ◆
+la grenouille
+b. il pétille ◆ elle brille ◆ la ville ◆ une fille ◆
+on éparpille
+c. nous rayons ◆ le noyer ◆ le voyage ◆
+un paysage ◆ le noyau

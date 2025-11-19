@@ -1,8 +1,0 @@
-7 Dans chaque liste, un mot n’a pas
-le même pluriel que les autres. Écris
-les listes sans intrus.
-a. soupe ◆ travail ◆ souris ◆ tortue ◆ téléphone
-b. cahier ◆ jambe ◆ hôpital ◆ ordinateur ◆ tablette
-c. chocolat ◆ gaz ◆ ville ◆ pull ◆ chat
-d. noisette ◆ banane ◆ orange ◆ noix ◆ clémentine
-e. tigre ◆ lion ◆ cheval ◆ panthère ◆ hyène

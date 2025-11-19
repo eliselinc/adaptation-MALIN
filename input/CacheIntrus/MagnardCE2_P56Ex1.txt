@@ -1,6 +1,0 @@
-1 Écris les listes sans intrus.
-a. nous voyons ◆ ils vont ◆ elles voient ◆ je vois
-b. je vois ◆ il voit ◆ je vais ◆ nous voyons
-c. je dis ◆ tu dînes ◆ il dit ◆ vous dites
-d. je fais ◆ tu fais ◆ je vais ◆ ils font
-e. ils dirent ◆ elles disent ◆ tu dis ◆ nous disons

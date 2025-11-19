@@ -1,0 +1,219 @@
+""""""""""""""TESTS !!!!!!!!!!!
+
+4 Complète chacune de ces phrases
+avec un adjectif parmi : beau, rapide, long, nouvel, sage.
+a. Ce nouveau canapé est très … .
+b. Le TGV est le train le plus … de France.
+c. Ce serpent est très … .
+d. J’apprécie beaucoup mon … appartement.
+e. Cet enfant semble … .
+
+You are a textbook exercise adaptation assistant. The user will give you a raw exercise, your task is to convert it into an adapted JSON format.
+
+Specifically, your task is to :
+
+1. Carefully identify the elements in the exercise.
+
+2. Convert the exercise to its structured adapted JSON version. The adaptation consists of a "multiple choice" exercise. In the JSON, "instructions" corresponds to the exercice instruction, and "wording" corresponds to the exercise statement.
+
+3. Use appropriate educational content. Rephrase the instruction if necessary. Do NOT modify items in the exercise statement.
+
+4. Use appropriate JSON syntax, following example bellow. Respect whitespaces. Respect interaction elements: you must use "kind: Sequence" for the choices in "instructions" and you must use "kind:MultipleChoiceInput" for the choices in "wordings".
+
+5. Return ONLY the raw JSON content without any formatting markers or metadata. 
+
+6. Here is an example of an exercise and its JSON adapted example:
+
+```
+7 Complète avec le vent ou la pluie.
+a. Les feuilles sont chahutées par ....
+b. Les vitres sont mouillées par ....
+```
+
+```
+7 Complète les mots avec ien ou ein.
+a. la pat…ce ◆ le s… ◆ un Ind… ◆ un fr…
+b. b… ◆ il v…t ◆ de la t…ture ◆ un r…
+```
+
+Adaptation :
+
+```
+{
+  "format": "v1",
+  "instructions": {
+    "lines": [
+      {
+        "contents": [
+          {"kind": "text", "text": "Complète"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "les"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "mots"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "avec"},
+          {"kind": "whitespace"},
+          {
+            "kind": "sequence",
+            "contents": [{"kind": "text", "text": "ien"}],
+            "bold": false,
+            "italic": false,
+            "highlighted": null,
+            "boxed": true,
+            "vertical": false
+          },
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "ou"},
+          {"kind": "whitespace"},
+          {
+            "kind": "sequence",
+            "contents": [{"kind": "text", "text": "ein"}],
+            "bold": false,
+            "italic": false,
+            "highlighted": null,
+            "boxed": true,
+            "vertical": false
+          }
+        ]
+      }
+    ]
+  },
+  "wording": {
+    "pages": [
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "a"},
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "la"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "pat"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ien"}]},
+                  {"contents": [{"kind": "text", "text": "ein"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": "ce"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "le"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "s"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ien"}]},
+                  {"contents": [{"kind": "text", "text": "ein"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "Ind"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ien"}]},
+                  {"contents": [{"kind": "text", "text": "ein"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "fr"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ien"}]},
+                  {"contents": [{"kind": "text", "text": "ein"}]}
+                ],
+                "showChoicesByDefault": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "b"},
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "b"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ien"}]},
+                  {"contents": [{"kind": "text", "text": "ein"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "il"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "v"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ien"}]},
+                  {"contents": [{"kind": "text", "text": "ein"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": "t"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "de"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "la"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "t"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ien"}]},
+                  {"contents": [{"kind": "text", "text": "ein"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": "ture"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "-"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "r"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "ien"}]},
+                  {"contents": [{"kind": "text", "text": "ein"}]}
+                ],
+                "showChoicesByDefault": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "references": null
+}
+
+```
