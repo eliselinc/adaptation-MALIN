@@ -14,7 +14,7 @@ Mode :
 **Commande**
 Dans `adaptation-MALIN` :
 ```bash
-python3 adapt/main.py <model> <type_adaptation> <output_format> <ex_path>? <id_exercice>?
+python3 adapt/main.py <model> <adaptation_type> <output_format> --ex_path <ex_path>? --ex_id <ex_id>?
 ```
 
 **Arguments**
@@ -26,21 +26,21 @@ python3 adapt/main.py <model> <type_adaptation> <output_format> <ex_path>? <id_e
     Spécifications : [https://docs.mistral.ai/getting-started/models/models_overview/](https://docs.mistral.ai/getting-started/models/models_overview/)
     - `gemini` (et autres) *en cours d'implémentation*
 
-- Type d'adaptation : récupère le prompt spécifique au format et au type d'adaptation demandé : `adapt/prompts_<format>/<type_adaptation>.txt` ainsi que les exemples dans la clé associée dans `adapt/prompts_json/examples.json`
+- Type d'adaptation : récupère le prompt spécifique au format et au type d'adaptation demandé : `adapt/prompts_<format>/<adaptation_type>.txt` ainsi que les exemples dans la clé associée dans `adapt/prompts_json/examples.json`
 
 - Format de sortie souhaité : `html` ou `json`
 
 - Exercice à donner en entrée (argument facultatif) : 
-    - récupère le fichier d'entrée texte `adapt/input/<type_adaptation>/<id_exercice>.txt`
-    - si utilisation du modèle vision pixtral, récupère le fichier d'entrée  PDF rogné sur l'exercice `adapt/input/<type_adaptation>/<id_exercice>.pdf`
+    - récupère le fichier d'entrée texte `<ex_path>/<adaptation_type>/<ex_id>.txt`
+    - si utilisation du modèle vision pixtral, récupère le fichier d'entrée  PDF rogné sur l'exercice `<ex_path>/<adaptation_type>/<ex_id>.pdf`
 
-    Si aucun id n'est spécifié : traite automatiquement tous les exercices du répertoire `adapt/input/<type_adaptation>/` (`*.txt` pour tous, et `*.pdf` si pixtral)
+    Si aucun id n'est spécifié : traite automatiquement tous les exercices du répertoire `<ex_path>/<adaptation_type>` (fichiers `*.txt` ; et `*.pdf` si modèle multimodal)
 
 **Sortie**
 
 Selon le format demandé :
-- Sortie HTML : `adapt/<type_adaptation>/output_html/<type_adaptation>/<id_exercice>.html`
-- Sortie JSON : `adapt/<type_adaptation>/output_json/<type_adaptation>/<id_exercice>.json`
+- Sortie HTML : `<ex_path>/<adaptation_type>/html/<ex_id>.html`
+- Sortie JSON : `<ex_path>/<adaptation_type>/json/<ex_id>.json`
 
 **Exemples d'exécution**
 

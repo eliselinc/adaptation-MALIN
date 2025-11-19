@@ -4,11 +4,11 @@ Dans le cadre du projet ANR MALIN pour l'accessibilité des manuels scolaires, c
 
 ## Adaptation → [adapt](https://github.com/eliselinc/adaptation-MALIN/tree/main/adapt)
 
-Adaptation d'un exercice de manuel scolaire en sa version adaptée avec les LLM (API Mistral ou Gemini).
+Adaptation d'exercices de manuel scolaire en leur version adaptée, selon le type d'adaptation, avec les LLM (API Mistral ou Gemini).
 
 ## Conversion → [convert](https://github.com/eliselinc/adaptation-MALIN/tree/main/convert)
 
-Conversion d'un exercice adapté d'une version à l'autre.
+Conversion d'exercices adaptés d'une version à l'autre.
 
 ## Setup
 
