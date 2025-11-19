@@ -1,56 +1,39 @@
 # Conversion
 
-Convert adapted exercises or textbooks
-
-## Setup
-
-1. Clone the repository:
-```bash
-git clone https://github.com/eliselinc/adaptation-MALIN.git
-cd adaptation-MALIN
-```
-
-2. Create a virtual environment and activate it:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows, use: venv\Scripts\activate
-```
-
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+Convertir des exercices ou manuels adaptés
 
 ## Running
 
-**Command**
+**Commande**
+
+Dans `adaptation-MALIN` :
 ```bash
 python3 convert/convert.py <input_textbook> <input_format>
 ```
 
 **Arguments**
 
-- Input textbook: one textbook repository or file
-- Input format: `cartable` or `patty` (or None)
+- Input textbook : 1 répertoire ou fichier correspondant à 1 manuel
+- Input format : `cartable` ou `malin` (ou rien)
 
-**Cases**
-- If `cartable`: 
-  - The input folder contains a `json` subfolder with Cartable .js exercises
-  - Outputs:
-    - Individual Patty JSON files: `./<textbook>/json_patty/*.json`
-    - Individual Patty HTML files: `./<textbook>/html_patty/*.html`
-    - Global textbook HTML file:`./<textbook>/html_patty/<textbook>.html`
-- If `patty`: 
-  - The input folder contains a `json_patty` folder with Patty .json exercises
-  - Outputs:
-    - Individual Patty HTML files: `./<textbook>/html_patty/*.html`
-    - Global textbook HTML file:`./<textbook>/html_patty/<textbook>.html`
-- If None: 
-  - Input is the independant HTML textbook file in Patty format
-  - Output:
-    - Individual Patty JSON files: `./<textbook>/json_patty/*.json`
+**Cas**
+- Si `cartable` : 
+  - Le dossier d'entrée contient un sous-dossier `json` avec les exercices .js au format Cartable
+  - Sorties :
+    - Fichiers individuels JSON MALIN : `./<textbook>/json_malin/*.json`
+    - Fichiers individuels HTML MALIN : `./<textbook>/html_malin/*.html`
+    - Fichier HTML MALIN du manuel complet :`./<textbook>/html_malin/<textbook>.html`
+- Si `malin` : 
+  - Le dossier d'entrée contient un sous-dossier `json_malin` avec les exercices .json au format MALIN
+  - Sorties :
+    - Fichiers individuels HTML MALIN : `./<textbook>/html_malin/*.html`
+    - Fichier HTML MALIN du manuel complet :`./<textbook>/html_malin/<textbook>.html`
+- Si pas de format spécifié : 
+  - L'entrée est un unique fichier HTML du manuel au format MALIN 
+  - Sortie :
+    - Fichiers individuels JSON MALIN : `./<textbook>/json_malin/*.json`
 
-**Example**
+**Exemples d'exécution**
 
 ```bash
 python3 convert/convert.py ../data/manuel_CM1_francais --input_format cartable
@@ -60,17 +43,17 @@ python3 convert/convert.py ../data/manuel_CM1_francais --input_format cartable
 python3 convert/convert.py ../data/manuel_CM1_francais/textbook.html
 ```
 
-**Folder organization**
+**Organisation d'un répertoire (1 répertoire = 1 manuel)**
 
 ```yaml
-<textbook> repository
+<textbook>
  |
- ├── *.html             # Cartable HTML files
- ├── json               # Cartable JSON files
- ├── communs            # Cartable CSS and style ressources
- ├── medias             # Images used in Cartable exercises
+ ├── *.html             # HTML Cartable
+ ├── json               # JSON Cartable
+ ├── communs            # CSS et styles Cartable
+ ├── medias             # Images utilisée dans les exercices Cartable
  |
- ├── json_patty         # Individual Patty JSON files
- ├── html_patty         # Individual Patty HTML files
- └── <textbook>.html    # Full textbook, unique Patty HTML file
+ ├── json_malin         # JSON MALIN (fichiers individuels)
+ ├── html_malin         # HTML MALIN (fichiers individuels)
+ └── <textbook>.html    # HTML MALIN, manuel complet dans 1 fichier unique
 ```
