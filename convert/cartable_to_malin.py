@@ -1,34 +1,10 @@
-"""
-Convertit les fichiers JSON du Cartable en JSON format de Patty
-
-##### Exécution #####
-
-cd ~/Documents/malin/src/Elise/src/adaptation-VJ/Patty/backend
-source venv/bin/activate
-python3 -m generated.convert_to_patty_json
-
-##### Données #####
-
-Adaptations du Cartable : 
-    Elise/data/adaptations_cartable/<id_textbook>/*.html
-    Elise/data/adaptations_cartable/<id_textbook>/json/*.js
-Adaptations du Cartable réduites en un HTML minimal (NON UTILISE) :
-    Elise/data/adaptations_cartable/minimal_html/<id_textbook>/*.html
-Adaptations du Cartable converties au format Patty : 
-    Elise/data/adaptations_cartable/<id_textbook>/json_patty/*.json
-    Elise/data/adaptations_cartable/<id_textbook>/html_patty/*.html    # POUR VISUALISATION
-Adaptations générées par Patty : 
-    Elise/data/adaptations_patty/<id_textbook>/json_patty/*.json
-    Elise/data/adaptations_patty/<id_textbook>/html_patty/*.html    # POUR VISUALISATION
-"""
-
 import glob
 import json
 import re
 from collections import defaultdict
 from pathlib import Path
-from patty_json_to_html_v2 import exercise_to_html, textbook_to_html #json_to_html
-from patty_json_to_html_v2 import *
+from malin_json_to_html_v2 import exercise_to_html, textbook_to_html
+from malin_json_to_html_v2 import *
 # import (
 #     BaseModel, Exercise, Pages, Text, Whitespace, 
 #     EditableTextInput, 

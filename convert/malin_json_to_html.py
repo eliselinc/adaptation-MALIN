@@ -1,3 +1,5 @@
+# Format et code initial de https://github.com/jacquev6/Patty/blob/develop/backend/generated/patty_json_to_html.py
+
 from __future__ import annotations
 import os
 from typing import Any, Literal

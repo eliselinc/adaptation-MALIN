@@ -4,8 +4,8 @@ from collections import defaultdict
 import os
 import re
 
-from patty_json_to_html_v2 import *
-from cartable_to_patty import *
+from malin_json_to_html import *
+from cartable_to_malin import *
 
 # =============== Utils ===============
 
@@ -49,18 +49,18 @@ if __name__ == "__main__":
     # Arguments parsing
     parser = argparse.ArgumentParser(description="Convert exercises")
     parser.add_argument("input_path", type=str, help="Repository input path, contains subfolders per textbook")
-    parser.add_argument("--input_format", type=str, help="'cartable' or 'patty'", default=None)
+    parser.add_argument("--input_format", type=str, help="'cartable' or 'malin'", default=None)
     args = parser.parse_args()
 
     input_path = Path(args.input_path)
     input_format = args.input_format.lower() if args.input_format else None
-    assert input_format in ["cartable", "patty", None], "Input format must be 'cartable' or 'patty' or None"
+    assert input_format in ["cartable", "malin", None], "Input format must be 'cartable' or 'malin' or None"
 
 
     if input_format is None:
         assert input_path.suffix.lower() == ".html", "If no input format is provided, the input path must be a single HTML textbook file"
-        # Crée un répertoire json_patty
-        output_path = input_path.parent.joinpath("json_patty")
+        # Crée un répertoire json_malin
+        output_path = input_path.parent.joinpath("json_malin")
         textbook_autonomous_html_file_to_directory(input_path, output_path)
         print(f"\n**** Extracted exercises in {output_path}")
         exit(0)
@@ -74,11 +74,11 @@ if __name__ == "__main__":
         # else: # Process all textbooks (subdirectories)
         #     js_files = list(input_path.glob("*/json/P*.js"))
         #     base_output_path = input_path
-    elif input_format == "patty":
-        assert input_path.joinpath("json_patty").exists(), f"Input path must contain a 'json_patty' subfolder: {input_path}"
-        # Input files: .json files in "json_patty" subfolders of textbooks
-        # if input_path.joinpath("json_patty").exists():  # Process a single textbook
-        js_files = list(input_path.glob("json_patty/P*.json"))
+    elif input_format == "malin":
+        assert input_path.joinpath("json_malin").exists(), f"Input path must contain a 'json_malin' subfolder: {input_path}"
+        # Input files: .json files in "json_malin" subfolders of textbooks
+        # if input_path.joinpath("json_malin").exists():  # Process a single textbook
+        js_files = list(input_path.glob("json_malin/P*.json"))
         base_output_path = input_path.parent
     # js_files = sorted(js_files, key=lambda p: int(re.search(r"P|p(\d+)", p.name).group(1)) if re.search(r"P|p(\d+)", p.name) else 0) # Odre croissant par numéro de page
     js_files = sorted(js_files, key=lambda p: extract_page_ex_num(p.name))
@@ -96,8 +96,8 @@ if __name__ == "__main__":
                 normalized_name = normalize_filename(raw_filename)
             except AttributeError as ve:
                 raise ValueError(f"Filename error, must be P<num>Ex<num/name>.json/js: {raw_filename}")
-            if input_format=="cartable": json_output_path = Path(base_output_path, textbook_name, "json_patty", normalized_name.replace(".js", ".json"))
-            html_output_path = Path(base_output_path, textbook_name, "html_patty", normalized_name.replace(".json", ".html").replace(".js", ".html"))
+            if input_format=="cartable": json_output_path = Path(base_output_path, textbook_name, "json_malin", normalized_name.replace(".js", ".json"))
+            html_output_path = Path(base_output_path, textbook_name, "html_malin", normalized_name.replace(".json", ".html").replace(".js", ".html"))
 
             if input_format=="cartable": exercise = convert_file(input_path)  # Convert Cartable to Exercise object (JSON Patty)
             else: exercise = load_exercise(input_path)  # Load Patty JSON to Exercise object
@@ -140,7 +140,7 @@ if __name__ == "__main__":
             exercises=exercises
         )
         html_global_path = Path(base_output_path, textbook_name, f"{textbook_name}.html")
-        # html_global_path = Path(base_output_path, textbook_name, "html_patty", f"{textbook_name}.html")
+        # html_global_path = Path(base_output_path, textbook_name, "html_malin", f"{textbook_name}.html")
         html_global_path.parent.mkdir(parents=True, exist_ok=True)
         with html_global_path.open("w", encoding="utf-8") as f:
             f.write(textbook_to_html(textbook))
