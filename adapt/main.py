@@ -12,6 +12,8 @@ from utils import *
 from api.gemini import *
 from api.mistral import *
 
+from convert.malin_json_to_html import *
+
 def get_api_client(api_name: str):
     if api_name in ["mistral","pixtral"]:
         return MistralAPI()
@@ -120,7 +122,7 @@ def main():
 
     # ADAPT EXERCISE(S)
     for path in file_paths:
-        adapted_ex = adapt_exercise(txt_path=path,
+        adaptation_json = adapt_exercise(txt_path=path,
                                     adaptation_type=adaptation_type,
                                     model=model,
                                     format=format)
@@ -128,21 +130,27 @@ def main():
         if format=="html":
             html_path = f"{output_dir}/{file_id}.html"
             with open(html_path, "w", encoding="utf-8") as f:
-                f.write(adapted_ex)
+                f.write(adaptation_json)
             print(f"HTML content saved to {html_path}")
         elif format=="json":
             if model=="gemini":
-                adapted_ex = parse_json_response(adapted_ex)
+                adaptation_json = parse_json_response(adaptation_json)
             else:
-                # print(repr(adapted_ex[:200]))
-                adapted_ex = ast.literal_eval(adapted_ex)
-                # print(type(adapted_ex))
-                # print(adapted_ex.keys())
-                # adapted_ex = json.loads(adapted_ex)
+                # print(repr(adaptation_json[:200]))
+                adaptation_json = ast.literal_eval(adaptation_json)
+                # print(type(adaptation_json))
+                # print(adaptation_json.keys())
+                # adaptation_json = json.loads(adaptation_json)
             json_path = f"{output_dir}/{file_id}.json"
             with open(json_path, "w", encoding="utf-8") as f:
-                json.dump(adapted_ex, f, ensure_ascii=False, indent=2, separators=(",", ":"))
+                json.dump(adaptation_json, f, ensure_ascii=False, indent=2, separators=(",", ":"))
             print(f"JSON content saved to {json_path}")
 
+            # Convert to HTML
+            html_path = f"{output_dir}/{file_id}.html"
+            with open(html_path, "w", encoding="utf-8") as f:
+                adaptation_html = exercise_to_html(adaptation_json)
+                f.write(adaptation_html)
+            print(f"HTML content saved to {html_path}")
 if __name__ == "__main__":
     main()
