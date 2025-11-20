@@ -1,6 +1,6 @@
 # Adapdation
 
-Adaptation d'un exercice de manuel scolaire en sa version adaptée avec les LLM (API Mistral ou Gemini).
+Adaptation d'un exercice de manuel scolaire en sa version adaptée selon sa catégorie d'adaptation, avec les LLM (API Gemini ou Mistral).
 
 Deux formats d'adaptation :
 - HTML (ancienne version Les Cahiers Fantastiques) 
@@ -8,6 +8,7 @@ Deux formats d'adaptation :
 
 Mode :
 - Few-shot si des exercices "exemples" sont saisis dans `adapt/prompts_json/examples.json`
+- Sinon zero-shot (ou one-shot avec un exemple intégré au prompt)
 
 ## Running
 
@@ -20,11 +21,11 @@ python3 adapt/main.py <model> <adaptation_type> <output_format> --ex_path <ex_pa
 **Arguments**
 
 - Modèle : 
-    - `mistral`: appelle le modèle `mistral-small-latest` (par défaut)
-    - `pixtral`: appelle le modèle `pixtral-12b-2409` qui permet un input multimodal texte-image
+    - `mistral` : appelle le modèle `mistral-small-latest` (par défaut)
+    - `pixtral` : appelle le modèle `pixtral-12b-2409` qui permet un input multimodal texte-image
 
     Spécifications : [https://docs.mistral.ai/getting-started/models/models_overview/](https://docs.mistral.ai/getting-started/models/models_overview/)
-    - `gemini` (et autres) *en cours d'implémentation*
+    - `gemini` : (et autres) *en cours d'implémentation*
 
 - Type d'adaptation : récupère le prompt spécifique au format et au type d'adaptation demandé : `adapt/prompts_<format>/<adaptation_type>.txt` ainsi que les exemples dans la clé associée dans `adapt/prompts_json/examples.json`
 

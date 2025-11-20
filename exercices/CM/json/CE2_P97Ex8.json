@@ -33,11 +33,44 @@
             "kind":"whitespace"
           },
           {
+            "kind":"text",
+            "text":"la"
+          },
+          {
+            "kind":"whitespace"
+          },
+          {
+            "kind":"text",
+            "text":"terminaison"
+          },
+          {
+            "kind":"whitespace"
+          },
+          {
+            "kind":"text",
+            "text":"qui"
+          },
+          {
+            "kind":"whitespace"
+          },
+          {
+            "kind":"text",
+            "text":"convient"
+          },
+          {
+            "kind":"text",
+            "text":"."
+          }
+        ]
+      },
+      {
+        "contents":[
+          {
             "kind":"choice",
             "contents":[
               {
                 "kind":"text",
-                "text":"io"
+                "text":"au"
               }
             ]
           },
@@ -45,8 +78,13 @@
             "kind":"whitespace"
           },
           {
-            "kind":"text",
-            "text":"ou"
+            "kind":"choice",
+            "contents":[
+              {
+                "kind":"text",
+                "text":"eau"
+              }
+            ]
           },
           {
             "kind":"whitespace"
@@ -56,7 +94,19 @@
             "contents":[
               {
                 "kind":"text",
-                "text":"oi"
+                "text":"o"
+              }
+            ]
+          },
+          {
+            "kind":"whitespace"
+          },
+          {
+            "kind":"choice",
+            "contents":[
+              {
+                "kind":"text",
+                "text":"ot"
               }
             ]
           }
@@ -65,7 +115,50 @@
     ]
   },
   "example":null,
-  "hint":null,
+  "hint":{
+    "lines":[
+      {
+        "contents":[
+          {
+            "kind":"text",
+            "text":"Tu"
+          },
+          {
+            "kind":"whitespace"
+          },
+          {
+            "kind":"text",
+            "text":"peux"
+          },
+          {
+            "kind":"whitespace"
+          },
+          {
+            "kind":"text",
+            "text":"t'aider"
+          },
+          {
+            "kind":"whitespace"
+          },
+          {
+            "kind":"text",
+            "text":"d'un"
+          },
+          {
+            "kind":"whitespace"
+          },
+          {
+            "kind":"text",
+            "text":"dictionnaire"
+          },
+          {
+            "kind":"text",
+            "text":"."
+          }
+        ]
+      }
+    ]
+  },
   "statement":{
     "pages":[
       {
@@ -81,46 +174,6 @@
               },
               {
                 "kind":"text",
-                "text":"une"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"rad"
-              },
-              {
-                "kind":"multipleChoicesInput",
-                "choices":[
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"io"
-                      }
-                    ]
-                  },
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"oi"
-                      }
-                    ]
-                  }
-                ],
-                "showChoicesByDefault":false
-              },
-              {
-                "kind":"text",
-                "text":"◆"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
                 "text":"un"
               },
               {
@@ -128,7 +181,7 @@
               },
               {
                 "kind":"text",
-                "text":"d"
+                "text":"cam"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -137,7 +190,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"io"
+                        "text":"au"
                       }
                     ]
                   },
@@ -145,16 +198,28 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oi"
+                        "text":"eau"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"o"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"ot"
                       }
                     ]
                   }
                 ],
                 "showChoicesByDefault":false
-              },
-              {
-                "kind":"text",
-                "text":"gt"
               },
               {
                 "kind":"whitespace"
@@ -168,14 +233,14 @@
               },
               {
                 "kind":"text",
-                "text":"un"
+                "text":"la"
               },
               {
                 "kind":"whitespace"
               },
               {
                 "kind":"text",
-                "text":"id"
+                "text":"p"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -184,7 +249,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"io"
+                        "text":"au"
                       }
                     ]
                   },
@@ -192,7 +257,23 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oi"
+                        "text":"eau"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"o"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"ot"
                       }
                     ]
                   }
@@ -201,7 +282,7 @@
               },
               {
                 "kind":"text",
-                "text":"t"
+                "text":"ture"
               },
               {
                 "kind":"whitespace"
@@ -222,7 +303,7 @@
               },
               {
                 "kind":"text",
-                "text":"n"
+                "text":"opérat"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -231,7 +312,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"io"
+                        "text":"au"
                       }
                     ]
                   },
@@ -239,7 +320,23 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oi"
+                        "text":"eau"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"o"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"ot"
                       }
                     ]
                   }
@@ -247,8 +344,56 @@
                 "showChoicesByDefault":false
               },
               {
+                "kind":"whitespace"
+              },
+              {
                 "kind":"text",
-                "text":"x"
+                "text":"◆"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"attent"
+              },
+              {
+                "kind":"multipleChoicesInput",
+                "choices":[
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"au"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"eau"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"o"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"ot"
+                      }
+                    ]
+                  }
+                ],
+                "showChoicesByDefault":false
               }
             ]
           }
@@ -274,7 +419,7 @@
               },
               {
                 "kind":"text",
-                "text":"n"
+                "text":"soustract"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -283,7 +428,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"io"
+                        "text":"au"
                       }
                     ]
                   },
@@ -291,16 +436,28 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oi"
+                        "text":"eau"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"o"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"ot"
                       }
                     ]
                   }
                 ],
                 "showChoicesByDefault":false
-              },
-              {
-                "kind":"text",
-                "text":"sette"
               },
               {
                 "kind":"whitespace"
@@ -321,7 +478,7 @@
               },
               {
                 "kind":"text",
-                "text":"v"
+                "text":"récréat"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -330,7 +487,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"io"
+                        "text":"au"
                       }
                     ]
                   },
@@ -338,16 +495,28 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oi"
+                        "text":"eau"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"o"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"ot"
                       }
                     ]
                   }
                 ],
                 "showChoicesByDefault":false
-              },
-              {
-                "kind":"text",
-                "text":"lence"
               },
               {
                 "kind":"whitespace"
@@ -361,59 +530,7 @@
               },
               {
                 "kind":"text",
-                "text":"une"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"v"
-              },
-              {
-                "kind":"multipleChoicesInput",
-                "choices":[
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"io"
-                      }
-                    ]
-                  },
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"oi"
-                      }
-                    ]
-                  }
-                ],
-                "showChoicesByDefault":false
-              },
-              {
-                "kind":"text",
-                "text":"lette"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "lines":[
-          {
-            "contents":[
-              {
-                "kind":"text",
-                "text":"c."
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"une"
+                "text":"le"
               },
               {
                 "kind":"whitespace"
@@ -429,7 +546,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"io"
+                        "text":"au"
                       }
                     ]
                   },
@@ -437,7 +554,23 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oi"
+                        "text":"eau"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"o"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"ot"
                       }
                     ]
                   }
@@ -446,50 +579,7 @@
               },
               {
                 "kind":"text",
-                "text":"re"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"◆"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"un"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"multipleChoicesInput",
-                "choices":[
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"io"
-                      }
-                    ]
-                  },
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"oi"
-                      }
-                    ]
-                  }
-                ],
-                "showChoicesByDefault":false
-              },
-              {
-                "kind":"text",
-                "text":"seau"
+                "text":"g"
               },
               {
                 "kind":"whitespace"
@@ -510,7 +600,7 @@
               },
               {
                 "kind":"text",
-                "text":"v"
+                "text":"p"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -519,7 +609,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"io"
+                        "text":"au"
                       }
                     ]
                   },
@@ -527,51 +617,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oi"
-                      }
-                    ]
-                  }
-                ],
-                "showChoicesByDefault":false
-              },
-              {
-                "kind":"text",
-                "text":"sin"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "lines":[
-          {
-            "contents":[
-              {
-                "kind":"text",
-                "text":"d."
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"une"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"v"
-              },
-              {
-                "kind":"multipleChoicesInput",
-                "choices":[
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"io"
+                        "text":"eau"
                       }
                     ]
                   },
@@ -579,46 +625,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oi"
-                      }
-                    ]
-                  }
-                ],
-                "showChoicesByDefault":false
-              },
-              {
-                "kind":"text",
-                "text":"le"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"◆"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"un"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"v"
-              },
-              {
-                "kind":"multipleChoicesInput",
-                "choices":[
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"io"
+                        "text":"o"
                       }
                     ]
                   },
@@ -626,63 +633,12 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oi"
+                        "text":"ot"
                       }
                     ]
                   }
                 ],
                 "showChoicesByDefault":false
-              },
-              {
-                "kind":"text",
-                "text":"lon"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"◆"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"la"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"v"
-              },
-              {
-                "kind":"multipleChoicesInput",
-                "choices":[
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"io"
-                      }
-                    ]
-                  },
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"oi"
-                      }
-                    ]
-                  }
-                ],
-                "showChoicesByDefault":false
-              },
-              {
-                "kind":"text",
-                "text":"ture"
               }
             ]
           }

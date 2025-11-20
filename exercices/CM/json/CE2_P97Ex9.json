@@ -37,7 +37,7 @@
             "contents":[
               {
                 "kind":"text",
-                "text":"ion"
+                "text":"io"
               }
             ]
           },
@@ -56,7 +56,7 @@
             "contents":[
               {
                 "kind":"text",
-                "text":"oin"
+                "text":"oi"
               }
             ]
           },
@@ -85,14 +85,14 @@
               },
               {
                 "kind":"text",
-                "text":"un"
+                "text":"une"
               },
               {
                 "kind":"whitespace"
               },
               {
                 "kind":"text",
-                "text":"cam"
+                "text":"rad"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -101,7 +101,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"ion"
+                        "text":"io"
                       }
                     ]
                   },
@@ -109,7 +109,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oin"
+                        "text":"oi"
                       }
                     ]
                   }
@@ -128,14 +128,14 @@
               },
               {
                 "kind":"text",
-                "text":"la"
+                "text":"un"
               },
               {
                 "kind":"whitespace"
               },
               {
                 "kind":"text",
-                "text":"p"
+                "text":"d"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -144,7 +144,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"ion"
+                        "text":"io"
                       }
                     ]
                   },
@@ -152,7 +152,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oin"
+                        "text":"oi"
                       }
                     ]
                   }
@@ -161,7 +161,54 @@
               },
               {
                 "kind":"text",
-                "text":"nture"
+                "text":"gt"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"◆"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"un"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"id"
+              },
+              {
+                "kind":"multipleChoicesInput",
+                "choices":[
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"io"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"oi"
+                      }
+                    ]
+                  }
+                ],
+                "showChoicesByDefault":false
+              },
+              {
+                "kind":"text",
+                "text":"t"
               },
               {
                 "kind":"whitespace"
@@ -182,7 +229,7 @@
               },
               {
                 "kind":"text",
-                "text":"opérat"
+                "text":"n"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -191,7 +238,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"ion"
+                        "text":"io"
                       }
                     ]
                   },
@@ -199,7 +246,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oin"
+                        "text":"oi"
                       }
                     ]
                   }
@@ -207,40 +254,8 @@
                 "showChoicesByDefault":false
               },
               {
-                "kind":"whitespace"
-              },
-              {
                 "kind":"text",
-                "text":"◆"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"attent"
-              },
-              {
-                "kind":"multipleChoicesInput",
-                "choices":[
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"ion"
-                      }
-                    ]
-                  },
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"oin"
-                      }
-                    ]
-                  }
-                ],
-                "showChoicesByDefault":false
+                "text":"x"
               }
             ]
           }
@@ -266,7 +281,7 @@
               },
               {
                 "kind":"text",
-                "text":"soustract"
+                "text":"n"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -275,7 +290,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"ion"
+                        "text":"io"
                       }
                     ]
                   },
@@ -283,12 +298,16 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oin"
+                        "text":"oi"
                       }
                     ]
                   }
                 ],
                 "showChoicesByDefault":false
+              },
+              {
+                "kind":"text",
+                "text":"sette"
               },
               {
                 "kind":"whitespace"
@@ -309,7 +328,7 @@
               },
               {
                 "kind":"text",
-                "text":"récréat"
+                "text":"v"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -318,7 +337,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"ion"
+                        "text":"io"
                       }
                     ]
                   },
@@ -326,12 +345,16 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oin"
+                        "text":"oi"
                       }
                     ]
                   }
                 ],
                 "showChoicesByDefault":false
+              },
+              {
+                "kind":"text",
+                "text":"lence"
               },
               {
                 "kind":"whitespace"
@@ -345,7 +368,59 @@
               },
               {
                 "kind":"text",
-                "text":"le"
+                "text":"une"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"v"
+              },
+              {
+                "kind":"multipleChoicesInput",
+                "choices":[
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"io"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"oi"
+                      }
+                    ]
+                  }
+                ],
+                "showChoicesByDefault":false
+              },
+              {
+                "kind":"text",
+                "text":"lette"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "lines":[
+          {
+            "contents":[
+              {
+                "kind":"text",
+                "text":"c."
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"une"
               },
               {
                 "kind":"whitespace"
@@ -361,7 +436,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"ion"
+                        "text":"io"
                       }
                     ]
                   },
@@ -369,12 +444,59 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oin"
+                        "text":"oi"
                       }
                     ]
                   }
                 ],
                 "showChoicesByDefault":false
+              },
+              {
+                "kind":"text",
+                "text":"re"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"◆"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"un"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"multipleChoicesInput",
+                "choices":[
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"io"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"oi"
+                      }
+                    ]
+                  }
+                ],
+                "showChoicesByDefault":false
+              },
+              {
+                "kind":"text",
+                "text":"seau"
               },
               {
                 "kind":"whitespace"
@@ -395,7 +517,7 @@
               },
               {
                 "kind":"text",
-                "text":"p"
+                "text":"v"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -404,7 +526,7 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"ion"
+                        "text":"io"
                       }
                     ]
                   },
@@ -412,12 +534,162 @@
                     "contents":[
                       {
                         "kind":"text",
-                        "text":"oin"
+                        "text":"oi"
                       }
                     ]
                   }
                 ],
                 "showChoicesByDefault":false
+              },
+              {
+                "kind":"text",
+                "text":"sin"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "lines":[
+          {
+            "contents":[
+              {
+                "kind":"text",
+                "text":"d."
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"une"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"v"
+              },
+              {
+                "kind":"multipleChoicesInput",
+                "choices":[
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"io"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"oi"
+                      }
+                    ]
+                  }
+                ],
+                "showChoicesByDefault":false
+              },
+              {
+                "kind":"text",
+                "text":"le"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"◆"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"un"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"v"
+              },
+              {
+                "kind":"multipleChoicesInput",
+                "choices":[
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"io"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"oi"
+                      }
+                    ]
+                  }
+                ],
+                "showChoicesByDefault":false
+              },
+              {
+                "kind":"text",
+                "text":"lon"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"◆"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"la"
+              },
+              {
+                "kind":"whitespace"
+              },
+              {
+                "kind":"text",
+                "text":"v"
+              },
+              {
+                "kind":"multipleChoicesInput",
+                "choices":[
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"io"
+                      }
+                    ]
+                  },
+                  {
+                    "contents":[
+                      {
+                        "kind":"text",
+                        "text":"oi"
+                      }
+                    ]
+                  }
+                ],
+                "showChoicesByDefault":false
+              },
+              {
+                "kind":"text",
+                "text":"ture"
               }
             ]
           }

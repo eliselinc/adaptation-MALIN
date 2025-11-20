@@ -1,88 +1,105 @@
+import json
 import os
-
 from dotenv import load_dotenv
-from mistralai import Mistral
+from google import genai
+from google.genai import types
 from pydantic import BaseModel
 from PIL import Image
 
 load_dotenv()
-mistral_client = Mistral(api_key=os.getenv("MISTRAL_API_KEY"))
 
-class AdaptationResponse(BaseModel):
-    html_content: str
+class GeminiAPI:
+    def __init__(self):
+        api_key = os.getenv("GEMINI_API_KEY")
+        if not api_key:
+            raise ValueError("Missing GEMINI_API_KEY in environment.")
+        self.client = genai.Client(api_key=api_key)
 
-def process_adaptation(mistral_model: str,
-                       first_prompt: str,
-                       ex_image: Image.Image, 
-                       ex_text: str,
-                       format: str) -> str:
+    def process_adaptation(
+            self,
+            model: str,
+            first_prompt: str,
+            input_image: Image.Image = None, 
+            input_text: str = "",
+            format: str = "html",
+            examples: list[tuple[str, str]] | None = None,
+    ) -> str:
 
-    first_message = {
-                        "role": "system",
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": first_prompt
-                            }
-                        ]
-                    }
-
-    if format == "html":
-        user_prompt_text = "Adapt this exercise into clean, raw HTML content."
-    elif format == "json":
-        user_prompt_text = "Adapt this exercise into clean, raw JSON content."
-
-    # Automate the adaptation of the exercice using Mistral small language model (text-only)
-    if mistral_model == "mistral":
-
-        messages = [first_message,
-                    {
-                        "role": "user",
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": f"""{user_prompt_text}
-                                {ex_text}"""
-                            },
-                            # TODO tester si l'envoi de l'exercice en 2e input texte a une influence
-                            # {
-                            #     "type": "text",
-                            #     "text": ex_text
-                            # }
-                        ]
-                    }
-                   ]
-
-        response = mistral_client.chat.complete(
-            model="mistral-small-latest",
-            messages=messages,
-            # max_tokens=4000
+        # SYSTEM MESSAGE 
+        first_message = types.Content(
+            role="user",#! "system" n'existe pas dans cette version
+            parts=[types.Part(text=first_prompt)]
         )
-    
-    # Automate the adaptation of the exercice using small Pixtral vision model
-    elif mistral_model == "pixtral":
-    
-        messages = [first_message,
-                    {
-                        "role": "user",
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": f"""{user_prompt_text}
-                                {ex_text}"""
-                            },
-                            {
-                                "type": "image_url",
-                                "image_url": f"data:image/jpeg;base64,{ex_image}"
-                            },
-                        ]
-                    }
-                   ]
-        
-        response = mistral_client.chat.complete(
-            model="pixtral-12b-2409",
-            messages=messages,
-            # max_tokens=4000
+
+        if format == "html":
+            user_prompt_text = "Adapt this exercise into clean, raw HTML content:\n"
+            user_prompt_text = "Adapte cet exercice en contenu HTML brut et propre suivant les instructions:\n"
+        elif format == "json":
+            user_prompt_text = "Adapt this exercise into clean, raw JSON content:\n"
+            user_prompt_text = "Adapte cet exercice en contenu JSON brut et propre suivant les instructions:\n"
+        else:
+            raise ValueError(f"Unknown format: {format} ; must be 'html' or 'json'.")
+
+        # FEW-SHOT CONSTRUCTION
+        fewshot_messages = []
+        if examples:
+            for input, output in examples:
+                fewshot_messages.extend([
+                    types.Content(
+                        role="user",
+                        parts=[types.Part(text=f"{user_prompt_text}{input}")]
+                    ),
+                    types.Content(
+                        role="model",
+                        parts=[types.Part(text=json.dumps(output, ensure_ascii=False))]
+                    )
+                ])
+
+        # USER MESSAGE
+        target_user_message = types.Content(
+            role="user",
+            parts=[types.Part(text=f"{user_prompt_text}{input_text}")]
         )
+
+        #TODO vision model ?
+
+        # MESSAGE SEQUENCE
+        messages = [first_message] + fewshot_messages
+
+        # CALL MODEL
+        chat = self.client.chats.create(
+            model="gemini-2.5-flash",
+            history=messages,
+        )
+        response = chat.send_message(f"{user_prompt_text}{input_text}")
+
+        return response.text
     
-    return response.choices[0].message.content
+        # # CREATE CHAT
+        # chat = self.client.chats.create(model="gemini-2.5-flash-lite")
+
+        # # SYSTEM MESSAGE
+        # chat.send_message(first_prompt, author="system")
+
+        # # USER PROMPT PREFIX
+        # if format == "html":
+        #     user_prompt_text = "Adapt this exercise into clean, raw HTML content:\n"
+        #     user_prompt_text = "Adapte cet exercice en contenu HTML brut et propre suivant les instructions:\n"
+        # elif format == "json":
+        #     user_prompt_text = "Adapt this exercise into clean, raw JSON content:\n"
+        #     user_prompt_text = "Adapte cet exercice en contenu JSON brut et propre suivant les instructions:\n"
+        # else:
+        #     raise ValueError(f"Unknown format: {format} ; must be 'html' or 'json'.")
+
+        # # FEW-SHOT
+        # if examples:
+        #     for input, output in examples:
+        #         # user example
+        #         chat.send_message(f"{user_prompt_text}{input}", author="user")
+        #         # assistant example
+        #         chat.send_message(f"{user_prompt_text}{output}", author="model")
+
+        # # USER MESSAGE
+        # response = chat.send_message(f"{user_prompt_text}{input_text}", author="user")
+
+        # return response.text

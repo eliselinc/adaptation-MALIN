@@ -42,6 +42,10 @@
             ]
           },
           {
+            "kind":"text",
+            "text":","
+          },
+          {
             "kind":"whitespace"
           },
           {
@@ -52,6 +56,10 @@
                 "text":"il"
               }
             ]
+          },
+          {
+            "kind":"text",
+            "text":","
           },
           {
             "kind":"whitespace"
@@ -83,6 +91,10 @@
                 "text":"y"
               }
             ]
+          },
+          {
+            "kind":"text",
+            "text":"."
           }
         ]
       }
@@ -216,10 +228,6 @@
                 "showChoicesByDefault":false
               },
               {
-                "kind":"text",
-                "text":"…"
-              },
-              {
                 "kind":"whitespace"
               },
               {
@@ -238,7 +246,7 @@
               },
               {
                 "kind":"text",
-                "text":"évé"
+                "text":"éventa"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -277,10 +285,6 @@
                   }
                 ],
                 "showChoicesByDefault":false
-              },
-              {
-                "kind":"text",
-                "text":"nta"
               },
               {
                 "kind":"whitespace"
@@ -602,56 +606,8 @@
                 "kind":"whitespace"
               },
               {
-                "kind":"multipleChoicesInput",
-                "choices":[
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"ill"
-                      }
-                    ]
-                  },
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"il"
-                      }
-                    ]
-                  },
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"i"
-                      }
-                    ]
-                  },
-                  {
-                    "contents":[
-                      {
-                        "kind":"text",
-                        "text":"y"
-                      }
-                    ]
-                  }
-                ],
-                "showChoicesByDefault":false
-              },
-              {
                 "kind":"text",
-                "text":"o"
-              },
-              {
-                "kind":"whitespace"
-              },
-              {
-                "kind":"text",
-                "text":"◆"
-              },
-              {
-                "kind":"whitespace"
+                "text":"jo"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -1010,6 +966,9 @@
                   }
                 ],
                 "showChoicesByDefault":false
+              },
+              {
+                "kind":"whitespace"
               },
               {
                 "kind":"text",
@@ -1638,7 +1597,7 @@
               },
               {
                 "kind":"text",
-                "text":"th"
+                "text":"thé"
               },
               {
                 "kind":"multipleChoicesInput",
@@ -1680,7 +1639,7 @@
               },
               {
                 "kind":"text",
-                "text":"é"
+                "text":"ère"
               },
               {
                 "kind":"whitespace"

@@ -1,0 +1,1346 @@
+{"CM":
+	[
+		{"input":"Complète avec les adverbes\nheureusement, brusquement, beaucoup.\na. Sur l'autoroute les voitures se sont arrêtées ….\nb. … d'automobilistes ont été surpris.\nc. … il n'y a pas eu d'accrochage.",
+		 "output":{
+  "format": "v1",
+  "instruction": {
+    "lines": [
+      {
+        "contents": [
+          {"kind": "text", "text": "Complète"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "avec"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "les"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "adverbes"}
+        ]
+      },
+      {
+        "contents": [
+          {
+            "kind": "formatted",
+            "contents": [
+              {
+                "kind": "formatted",
+                "contents": [{"kind": "text", "text": "heureusement"}],
+                "bold": false,
+                "italic": false,
+                "underlined": false,
+                "highlighted": null,
+                "boxed": true,
+                "superscript": false,
+                "subscript": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "whitespace"},
+              {
+                "kind": "formatted",
+                "contents": [{"kind": "text", "text": "brusquement"}],
+                "bold": false,
+                "italic": false,
+                "underlined": false,
+                "highlighted": null,
+                "boxed": true,
+                "superscript": false,
+                "subscript": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "whitespace"},
+              {
+                "kind": "formatted",
+                "contents": [{"kind": "text", "text": "beaucoup"}],
+                "bold": false,
+                "italic": false,
+                "underlined": false,
+                "highlighted": null,
+                "boxed": true,
+                "superscript": false,
+                "subscript": false
+              }
+            ],
+            "bold": false,
+            "italic": false,
+            "underlined": false,
+            "highlighted": null,
+            "boxed": false,
+            "superscript": false,
+            "subscript": false
+          }
+        ]
+      }
+    ]
+  },
+  "example": null,
+  "hint": null,
+  "statement": {
+    "pages": [
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "a."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "Sur"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "l'autoroute"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "les"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "voitures"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "se"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "sont"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "arrêtées"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "heureusement"}]},
+                  {"contents": [{"kind": "text", "text": "brusquement"}]},
+                  {"contents": [{"kind": "text", "text": "beaucoup"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": "."}
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "b."},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "Heureusement"}]},
+                  {"contents": [{"kind": "text", "text": "Brusquement"}]},
+                  {"contents": [{"kind": "text", "text": "Beaucoup"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "d'automobilistes"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "ont"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "été"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "surpris."}
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "c."},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "Heureusement"}]},
+                  {"contents": [{"kind": "text", "text": "Brusquement"}]},
+                  {"contents": [{"kind": "text", "text": "Beaucoup"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "il"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "n'y"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "a"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "pas"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "eu"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "d'accrochage."}
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "reference": null
+}
+	},
+{"input":"Complète ce texte avec les adverbes proposés.\nlonguement · d'abord · lentement · ensuite ·\nenfin · aujourd'hui\nUne soucoupe volante s'est posée … chez le\nvoisin. …, on a distingué, par le hublot, une forme\ngélatineuse. …, la porte de l'engin s'est ouverte ….\nUn extraterrestre est sorti.\nIl nous a dévisagés …. …, il a éclaté de rire !",
+"output":{
+  "format": "v1",
+  "instruction": {
+    "lines": [
+      {
+        "contents": [
+          {"kind": "text", "text": "Choisis"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "les"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "adverbes"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "qui"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "conviennent"},
+          {"kind": "text", "text": "."}
+        ]
+      },
+      {
+        "contents": [
+          {
+            "kind": "choice",
+            "contents": [{"kind": "text", "text": "longuement"}]
+          },
+          {"kind": "whitespace"},
+          {"kind": "choice", "contents": [{"kind": "text", "text": "d'abord"}]},
+          {"kind": "whitespace"},
+          {
+            "kind": "choice",
+            "contents": [{"kind": "text", "text": "lentement"}]
+          },
+          {"kind": "whitespace"},
+          {"kind": "choice", "contents": [{"kind": "text", "text": "ensuite"}]},
+          {"kind": "whitespace"},
+          {"kind": "choice", "contents": [{"kind": "text", "text": "enfin"}]},
+          {"kind": "whitespace"},
+          {
+            "kind": "choice",
+            "contents": [{"kind": "text", "text": "aujourd'hui"}]
+          }
+        ]
+      }
+    ]
+  },
+  "example": null,
+  "hint": null,
+  "statement": {
+    "pages": [
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "Une"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "soucoupe"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "volante"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "s’est"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "posée"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "longuement"}]},
+                  {"contents": [{"kind": "text", "text": "d'abord"}]},
+                  {"contents": [{"kind": "text", "text": "lentement"}]},
+                  {"contents": [{"kind": "text", "text": "ensuite"}]},
+                  {"contents": [{"kind": "text", "text": "enfin"}]},
+                  {"contents": [{"kind": "text", "text": "aujourd'hui"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "chez"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "le"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "voisin"},
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "Longuement"}]},
+                  {"contents": [{"kind": "text", "text": "D'abord"}]},
+                  {"contents": [{"kind": "text", "text": "Lentement"}]},
+                  {"contents": [{"kind": "text", "text": "Ensuite"}]},
+                  {"contents": [{"kind": "text", "text": "Enfin"}]},
+                  {"contents": [{"kind": "text", "text": "Aujourd'hui"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": ","},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "on"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "a"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "distingué"},
+              {"kind": "text", "text": ","},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "par"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "le"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "hublot"},
+              {"kind": "text", "text": ","},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "une"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "forme"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "gélatineuse"},
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "Longuement"}]},
+                  {"contents": [{"kind": "text", "text": "D'abord"}]},
+                  {"contents": [{"kind": "text", "text": "Lentement"}]},
+                  {"contents": [{"kind": "text", "text": "Ensuite"}]},
+                  {"contents": [{"kind": "text", "text": "Enfin"}]},
+                  {"contents": [{"kind": "text", "text": "Aujourd'hui"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": ","},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "la"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "porte"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "de"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "l’engin"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "s’est"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "ouverte"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "longuement"}]},
+                  {"contents": [{"kind": "text", "text": "d'abord"}]},
+                  {"contents": [{"kind": "text", "text": "lentement"}]},
+                  {"contents": [{"kind": "text", "text": "ensuite"}]},
+                  {"contents": [{"kind": "text", "text": "enfin"}]},
+                  {"contents": [{"kind": "text", "text": "aujourd'hui"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": "."}
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "Un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "extraterrestre"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "est"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "sorti"},
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "Il"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "nous"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "a"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "dévisagés"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "longuement"}]},
+                  {"contents": [{"kind": "text", "text": "d'abord"}]},
+                  {"contents": [{"kind": "text", "text": "lentement"}]},
+                  {"contents": [{"kind": "text", "text": "ensuite"}]},
+                  {"contents": [{"kind": "text", "text": "enfin"}]},
+                  {"contents": [{"kind": "text", "text": "aujourd'hui"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "Longuement"}]},
+                  {"contents": [{"kind": "text", "text": "D'abord"}]},
+                  {"contents": [{"kind": "text", "text": "Lentement"}]},
+                  {"contents": [{"kind": "text", "text": "Ensuite"}]},
+                  {"contents": [{"kind": "text", "text": "Enfin"}]},
+                  {"contents": [{"kind": "text", "text": "Aujourd'hui"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": ","},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "il"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "a"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "éclaté"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "de"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "rire"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "!"}
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "reference": null
+}
+	},
+{"input":"Complète les phrases avec et ou est.\nAttention au sens !\na. Clément ... parti depuis un mois ... demi.\nb. Cette jeune fille ... gaie ... souriante.\nc. Le chat ... sur mes genoux ... il ronronne.\nd. Ce cartable ... trop lourd ... trop volumineux.",
+"output":{
+  "format": "v1",
+  "instruction": {
+    "lines": [
+      {
+        "contents": [
+          {"kind": "text", "text": "Complète"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "les"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "phrases"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "avec"},
+          {"kind": "whitespace"},
+          {"kind": "choice", "contents": [{"kind": "text", "text": "et"}]},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "ou"},
+          {"kind": "whitespace"},
+          {"kind": "choice", "contents": [{"kind": "text", "text": "est"}]},
+          {"kind": "text", "text": "."}
+        ]
+      }
+    ]
+  },
+  "example": null,
+  "hint": {
+    "lines": [
+      {
+        "contents": [
+          {"kind": "text", "text": "Attention"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "au"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "sens"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "!"}
+        ]
+      }
+    ]
+  },
+  "statement": {
+    "pages": [
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "a."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "Clément"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "et"}]},
+                  {"contents": [{"kind": "text", "text": "est"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "parti"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "depuis"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "mois"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "et"}]},
+                  {"contents": [{"kind": "text", "text": "est"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "demi"},
+              {"kind": "text", "text": "."}
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "b."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "Cette"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "jeune"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "fille"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "et"}]},
+                  {"contents": [{"kind": "text", "text": "est"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "gaie"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "et"}]},
+                  {"contents": [{"kind": "text", "text": "est"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "souriante"},
+              {"kind": "text", "text": "."}
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "c."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "Le"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "chat"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "et"}]},
+                  {"contents": [{"kind": "text", "text": "est"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "sur"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "mes"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "genoux"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "et"}]},
+                  {"contents": [{"kind": "text", "text": "est"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "il"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "ronronne"},
+              {"kind": "text", "text": "."}
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "d."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "Ce"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "cartable"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "et"}]},
+                  {"contents": [{"kind": "text", "text": "est"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "trop"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "lourd"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "et"}]},
+                  {"contents": [{"kind": "text", "text": "est"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "trop"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "volumineux"},
+              {"kind": "text", "text": "."}
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "reference": null
+}
+	},
+{"input":"Recopie le texte en choisissant les adverbes.\nNous étions entrés (dans un grand silence/\nsilencieusement) dans la chambre. Grand-père\ndormait (profondément/en profondeur). Duchesse,\nla belle chatte blanche était près de lui. (Avec\nlenteur/Lentement), elle avait ouvert les yeux et\ns'était étirée en baillant. Puis à son tour, grand-père\ns'était réveillé (doucement/avec douceur). Bonjour\nles enfants, ça me fait plaisir de vous voir !",
+"output":{
+  "format": "v1",
+  "instruction": {
+    "lines": [
+      {
+        "contents": [
+          {"kind": "text", "text": "Complète"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "le"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "texte"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "en"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "choisissant"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "les"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "adverbes"},
+          {"kind": "text", "text": "."}
+        ]
+      }
+    ]
+  },
+  "example": null,
+  "hint": null,
+  "statement": {
+    "pages": [
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "Nous"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "étions"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "entrés"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {
+                    "contents": [
+                      {"kind": "text", "text": "dans un grand silence"}
+                    ]
+                  },
+                  {"contents": [{"kind": "text", "text": "silencieusement"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "dans"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "la"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "chambre"},
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "Grand-père"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "dormait"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "profondément"}]},
+                  {"contents": [{"kind": "text", "text": "en profondeur"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "Duchesse,"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "la"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "belle"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "chatte"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "blanche"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "était"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "près"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "de"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "lui"},
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "Avec lenteur"}]},
+                  {"contents": [{"kind": "text", "text": "Lentement"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "elle"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "avait"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "ouvert"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "les"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "yeux"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "et"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "s'était"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "étirée"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "en"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "baillant"},
+              {"kind": "text", "text": "."}
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "Puis"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "à"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "son"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "tour,"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "grand-père"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "s'était"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "réveillé"},
+              {"kind": "whitespace"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "doucement"}]},
+                  {"contents": [{"kind": "text", "text": "avec douceur"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "text", "text": "."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "Bonjour"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "les"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "enfants,"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "ça"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "me"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "fait"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "plaisir"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "de"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "vous"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "voir"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "!"}
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "reference": null
+}
+  },
+{"input":"Complète chaque phrase en choisissant le mot qui convient.\na. vos • veau\nSortez ... cahiers et ... feutres.\nb. lot • l'eau\nQuelle chance ! Elle a gagné le gros ....\nc. mot • maux\nEn cas de ... de tête, prends un peu d'aspirine.\nd. pot • peau\nLe ... s'est cassé en tombant par terre.",
+"output":{
+  "format": "v2",
+  "phases": [
+    {
+      "instruction": {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "Complète"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "chaque"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "phrase"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "en"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "choisissant"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "le"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "mot"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "qui"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "convient"},
+              {"kind": "text", "text": "."}
+            ]
+          },
+          {
+            "contents": [
+              {"kind": "choice", "contents": [{"kind": "text", "text": "vos"}]},
+              {"kind": "whitespace"},
+              {"kind": "whitespace"},
+              {"kind": "choice", "contents": [{"kind": "text", "text": "veau"}]}
+            ]
+          }
+        ]
+      },
+      "example": null,
+      "hint": null,
+      "statement": {
+        "pages": [
+          {
+            "lines": [
+              {
+                "contents": [
+                  {"kind": "text", "text": "a."},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "Sortez"},
+                  {"kind": "whitespace"},
+                  {
+                    "kind": "multipleChoicesInput",
+                    "choices": [
+                      {"contents": [{"kind": "text", "text": "vos"}]},
+                      {"contents": [{"kind": "text", "text": "veau"}]}
+                    ],
+                    "showChoicesByDefault": false
+                  },
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "cahiers"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "et"},
+                  {"kind": "whitespace"},
+                  {
+                    "kind": "multipleChoicesInput",
+                    "choices": [
+                      {"contents": [{"kind": "text", "text": "vos"}]},
+                      {"contents": [{"kind": "text", "text": "veau"}]}
+                    ],
+                    "showChoicesByDefault": false
+                  },
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "feutres"},
+                  {"kind": "text", "text": "."}
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instruction": {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "Complète"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "chaque"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "phrase"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "en"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "choisissant"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "le"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "mot"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "qui"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "convient"},
+              {"kind": "text", "text": "."}
+            ]
+          },
+          {
+            "contents": [
+              {"kind": "choice", "contents": [{"kind": "text", "text": "lot"}]},
+              {"kind": "whitespace"},
+              {"kind": "whitespace"},
+              {
+                "kind": "choice",
+                "contents": [{"kind": "text", "text": "l’eau"}]
+              }
+            ]
+          }
+        ]
+      },
+      "example": null,
+      "hint": null,
+      "statement": {
+        "pages": [
+          {
+            "lines": [
+              {
+                "contents": [
+                  {"kind": "text", "text": "b."},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "Quelle"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "chance"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "!"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "Elle"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "a"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "gagné"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "le"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "gros"},
+                  {"kind": "whitespace"},
+                  {
+                    "kind": "multipleChoicesInput",
+                    "choices": [
+                      {"contents": [{"kind": "text", "text": "lot"}]},
+                      {"contents": [{"kind": "text", "text": "l’eau"}]}
+                    ],
+                    "showChoicesByDefault": false
+                  },
+                  {"kind": "text", "text": "."}
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instruction": {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "Complète"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "chaque"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "phrase"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "en"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "choisissant"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "le"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "mot"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "qui"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "convient"},
+              {"kind": "text", "text": "."}
+            ]
+          },
+          {
+            "contents": [
+              {"kind": "choice", "contents": [{"kind": "text", "text": "mot"}]},
+              {"kind": "whitespace"},
+              {"kind": "whitespace"},
+              {"kind": "choice", "contents": [{"kind": "text", "text": "maux"}]}
+            ]
+          }
+        ]
+      },
+      "example": null,
+      "hint": null,
+      "statement": {
+        "pages": [
+          {
+            "lines": [
+              {
+                "contents": [
+                  {"kind": "text", "text": "c."},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "En"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "cas"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "de"},
+                  {"kind": "whitespace"},
+                  {
+                    "kind": "multipleChoicesInput",
+                    "choices": [
+                      {"contents": [{"kind": "text", "text": "mot"}]},
+                      {"contents": [{"kind": "text", "text": "maux"}]}
+                    ],
+                    "showChoicesByDefault": false
+                  },
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "de"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "tête"},
+                  {"kind": "text", "text": ","},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "prends"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "un"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "peu"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "d’aspirine"},
+                  {"kind": "text", "text": "."}
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instruction": {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "Complète"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "chaque"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "phrase"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "en"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "choisissant"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "le"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "mot"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "qui"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "convient"},
+              {"kind": "text", "text": "."}
+            ]
+          },
+          {
+            "contents": [
+              {"kind": "choice", "contents": [{"kind": "text", "text": "pot"}]},
+              {"kind": "whitespace"},
+              {"kind": "whitespace"},
+              {"kind": "choice", "contents": [{"kind": "text", "text": "peau"}]}
+            ]
+          }
+        ]
+      },
+      "example": null,
+      "hint": null,
+      "statement": {
+        "pages": [
+          {
+            "lines": [
+              {
+                "contents": [
+                  {"kind": "text", "text": "d."},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "Le"},
+                  {"kind": "whitespace"},
+                  {
+                    "kind": "multipleChoicesInput",
+                    "choices": [
+                      {"contents": [{"kind": "text", "text": "pot"}]},
+                      {"contents": [{"kind": "text", "text": "peau"}]}
+                    ],
+                    "showChoicesByDefault": false
+                  },
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "s’est"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "cassé"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "en"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "tombant"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "par"},
+                  {"kind": "whitespace"},
+                  {"kind": "text", "text": "terre"},
+                  {"kind": "text", "text": "."}
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "reference": null
+}
+    },
+	
+{"input":"Complète les mots avec la terminaison qui convient.\nTu peux t'aider d'un dictionnaire.\n-au -eau -o -ot\na. un tuy... • le noy...\nb. un haric... • un p...\nc. la mété... • la noix de coc...\nd. un morc... • un cad...",
+"output":{
+  "format": "v1",
+  "instruction": {
+    "lines": [
+      {
+        "contents": [
+          {"kind": "text", "text": "Complète"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "les"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "mots"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "avec"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "la"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "terminaison"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "qui"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "convient"},
+          {"kind": "text", "text": "."}
+        ]
+      },
+      {
+        "contents": [
+          {"kind": "choice", "contents": [{"kind": "text", "text": "-au"}]},
+          {"kind": "whitespace"},
+          {"kind": "whitespace"},
+          {"kind": "choice", "contents": [{"kind": "text", "text": "-eau"}]},
+          {"kind": "whitespace"},
+          {"kind": "whitespace"},
+          {"kind": "choice", "contents": [{"kind": "text", "text": "-o"}]},
+          {"kind": "whitespace"},
+          {"kind": "whitespace"},
+          {"kind": "choice", "contents": [{"kind": "text", "text": "-ot"}]}
+        ]
+      }
+    ]
+  },
+  "example": null,
+  "hint": {
+    "lines": [
+      {
+        "contents": [
+          {"kind": "text", "text": "Tu"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "peux"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "t'aider"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "d'un"},
+          {"kind": "whitespace"},
+          {"kind": "text", "text": "dictionnaire"},
+          {"kind": "text", "text": "."}
+        ]
+      }
+    ]
+  },
+  "statement": {
+    "pages": [
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "a."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "tuy"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "au"}]},
+                  {"contents": [{"kind": "text", "text": "eau"}]},
+                  {"contents": [{"kind": "text", "text": "o"}]},
+                  {"contents": [{"kind": "text", "text": "ot"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "•"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "le"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "noy"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "au"}]},
+                  {"contents": [{"kind": "text", "text": "eau"}]},
+                  {"contents": [{"kind": "text", "text": "o"}]},
+                  {"contents": [{"kind": "text", "text": "ot"}]}
+                ],
+                "showChoicesByDefault": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "b."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "haric"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "au"}]},
+                  {"contents": [{"kind": "text", "text": "eau"}]},
+                  {"contents": [{"kind": "text", "text": "o"}]},
+                  {"contents": [{"kind": "text", "text": "ot"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "•"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "p"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "au"}]},
+                  {"contents": [{"kind": "text", "text": "eau"}]},
+                  {"contents": [{"kind": "text", "text": "o"}]},
+                  {"contents": [{"kind": "text", "text": "ot"}]}
+                ],
+                "showChoicesByDefault": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "c."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "la"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "mété"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "au"}]},
+                  {"contents": [{"kind": "text", "text": "eau"}]},
+                  {"contents": [{"kind": "text", "text": "o"}]},
+                  {"contents": [{"kind": "text", "text": "ot"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "•"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "la"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "noix"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "de"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "coc"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "au"}]},
+                  {"contents": [{"kind": "text", "text": "eau"}]},
+                  {"contents": [{"kind": "text", "text": "o"}]},
+                  {"contents": [{"kind": "text", "text": "ot"}]}
+                ],
+                "showChoicesByDefault": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "contents": [
+              {"kind": "text", "text": "d."},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "morc"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "au"}]},
+                  {"contents": [{"kind": "text", "text": "eau"}]},
+                  {"contents": [{"kind": "text", "text": "o"}]},
+                  {"contents": [{"kind": "text", "text": "ot"}]}
+                ],
+                "showChoicesByDefault": false
+              },
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "•"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "un"},
+              {"kind": "whitespace"},
+              {"kind": "text", "text": "cad"},
+              {
+                "kind": "multipleChoicesInput",
+                "choices": [
+                  {"contents": [{"kind": "text", "text": "au"}]},
+                  {"contents": [{"kind": "text", "text": "eau"}]},
+                  {"contents": [{"kind": "text", "text": "o"}]},
+                  {"contents": [{"kind": "text", "text": "ot"}]}
+                ],
+                "showChoicesByDefault": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "reference": null
+}
+  }
+  ]
+}

@@ -39,9 +39,7 @@ python3 convert/convert.py <input_textbook> <input_format>
 
 ```bash
 python3 convert/convert.py ../data/manuel_CM1_francais --input_format cartable
-```
 
-```bash
 python3 convert/convert.py ../data/manuel_CM1_francais/textbook.html
 ```
 

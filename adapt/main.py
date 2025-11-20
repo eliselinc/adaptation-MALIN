@@ -53,7 +53,7 @@ def adapt_exercise(txt_path:str,
             first_prompt = file.read()
 
         # EXAMPLES FOR FEW-SHOT LEARNING according to the adaptation type
-        with open("adapt/prompts_json/examples.json", 'r', encoding='utf-8') as file:
+        with open(f"adapt/prompts_json/examples{adaptation_type}.json", 'r', encoding='utf-8') as file:
             # List of tuples (input, output)
             examples = [(e['input'], e["output"]) for e in json.load(file)[adaptation_type]]
             #TODO e["output"] doit être lu comme string
@@ -84,7 +84,7 @@ def main():
     parser = argparse.ArgumentParser(description="Adapt PDF exercise")
     parser.add_argument("model", type=str, help="'mistral' (small language model) or 'pixtral' (small vision language model) or 'gemini' (flash 2.5)")
     parser.add_argument("adaptation_type", type=str, help="E.g. CacheIntrus, CM, EditPhrase, RCCadre")
-    parser.add_argument("--format", type=str, default="json")
+    parser.add_argument("format", type=str, default="json")
     parser.add_argument("--ex_path", type=str, nargs="?", default="exercices")
     parser.add_argument("--ex_id", type=str, nargs="?", default=None)
     args = parser.parse_args()
@@ -99,12 +99,12 @@ def main():
 
     # CREATE OUTPUT DIRECTORY
     if format == "html":
-        output_dir = f"{ex_path}/{adaptation_type}/output_html"
+        output_dir = f"{ex_path}/{adaptation_type}/html"
         if not os.path.exists(output_dir):
             os.makedirs(output_dir, exist_ok=True)
-            shutil.copytree(f"{ex_path}/output_html/communs/", os.path.join(output_dir, "communs"))
+            #TODO shutil.copytree(f"{ex_path}/html/communs/", os.path.join(output_dir, "communs"))
     elif format == "json":
-        output_dir = f"{ex_path}/{adaptation_type}/output_json"
+        output_dir = f"{ex_path}/{adaptation_type}/json"
         if not os.path.exists(output_dir):
             os.makedirs(output_dir, exist_ok=True)
 
@@ -131,11 +131,14 @@ def main():
                 f.write(adapted_ex)
             print(f"HTML content saved to {html_path}")
         elif format=="json":
-            print(repr(adapted_ex[:200]))
-            adapted_ex = ast.literal_eval(adapted_ex)
-            print(type(adapted_ex))
-            print(adapted_ex.keys())
-            # adapted_ex = json.loads(adapted_ex)
+            if model=="gemini":
+                adapted_ex = parse_json_response(adapted_ex)
+            else:
+                # print(repr(adapted_ex[:200]))
+                adapted_ex = ast.literal_eval(adapted_ex)
+                # print(type(adapted_ex))
+                # print(adapted_ex.keys())
+                # adapted_ex = json.loads(adapted_ex)
             json_path = f"{output_dir}/{file_id}.json"
             with open(json_path, "w", encoding="utf-8") as f:
                 json.dump(adapted_ex, f, ensure_ascii=False, indent=2, separators=(",", ":"))

@@ -1,5 +1,6 @@
 import base64
 import io
+import json
 import re
 from bs4 import BeautifulSoup, NavigableString
 from PIL import Image
@@ -29,6 +30,36 @@ def image_to_base64(image:Image.Image, max_size:tuple=(600,800)) -> str:
     image.save(buffered, format="JPEG", quality=75, optimize=True)
     return base64.b64encode(buffered.getvalue()).decode()
 
+# CLEAN LLM RESPONSE
+
+def parse_json_response(response_text: str) -> dict:
+    """
+    Transforme une string (type générée par Gemini) en JSON Python.
+    - Supprime les backticks ``` ou ```json
+    - Extrait le JSON
+    - Parse en dict Python
+    """
+    if not response_text:
+        raise ValueError("La réponse est vide")
+
+    # Supprimer les éventuels backticks et lang tag
+    cleaned_text = re.sub(r"^```(?:json)?\s*", "", response_text)
+    cleaned_text = re.sub(r"\s*```$", "", cleaned_text)
+
+    # Extraire le JSON : cherche le premier { et le dernier }
+    match = re.search(r"\{.*\}", cleaned_text, re.DOTALL)
+    if not match:
+        raise ValueError("Impossible de trouver un JSON valide dans la réponse")
+
+    json_str = match.group(0)
+
+    try:
+        return json.loads(json_str)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Erreur lors du parsing JSON : {e}") from e
+
+
+# HTML RENDERING
 
 def custom_pretty_print(soup, indent_level=3, indent_size=4):
     """Custom pretty print function to format HTML with specific rules for <div> tags."""
