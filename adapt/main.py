@@ -12,7 +12,7 @@ from utils import *
 from api.gemini import *
 from api.mistral import *
 
-from convert.malin_json_to_html import *
+from .convert.malin_json_to_html import *
 
 def get_api_client(api_name: str):
     if api_name in ["mistral","pixtral"]:
