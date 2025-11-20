@@ -27,7 +27,7 @@ class GeminiAPI:
 
         # SYSTEM MESSAGE 
         first_message = types.Content(
-            role="user",#! "system" n'existe pas dans cette version
+            role="user", #! "system" n'existe pas dans cette version
             parts=[types.Part(text=first_prompt)]
         )
 
@@ -55,12 +55,6 @@ class GeminiAPI:
                     )
                 ])
 
-        # USER MESSAGE
-        target_user_message = types.Content(
-            role="user",
-            parts=[types.Part(text=f"{user_prompt_text}{input_text}")]
-        )
-
         #TODO vision model ?
 
         # MESSAGE SEQUENCE
@@ -74,32 +68,3 @@ class GeminiAPI:
         response = chat.send_message(f"{user_prompt_text}{input_text}")
 
         return response.text
-    
-        # # CREATE CHAT
-        # chat = self.client.chats.create(model="gemini-2.5-flash-lite")
-
-        # # SYSTEM MESSAGE
-        # chat.send_message(first_prompt, author="system")
-
-        # # USER PROMPT PREFIX
-        # if format == "html":
-        #     user_prompt_text = "Adapt this exercise into clean, raw HTML content:\n"
-        #     user_prompt_text = "Adapte cet exercice en contenu HTML brut et propre suivant les instructions:\n"
-        # elif format == "json":
-        #     user_prompt_text = "Adapt this exercise into clean, raw JSON content:\n"
-        #     user_prompt_text = "Adapte cet exercice en contenu JSON brut et propre suivant les instructions:\n"
-        # else:
-        #     raise ValueError(f"Unknown format: {format} ; must be 'html' or 'json'.")
-
-        # # FEW-SHOT
-        # if examples:
-        #     for input, output in examples:
-        #         # user example
-        #         chat.send_message(f"{user_prompt_text}{input}", author="user")
-        #         # assistant example
-        #         chat.send_message(f"{user_prompt_text}{output}", author="model")
-
-        # # USER MESSAGE
-        # response = chat.send_message(f"{user_prompt_text}{input_text}", author="user")
-
-        # return response.text
