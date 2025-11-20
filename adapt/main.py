@@ -2,7 +2,7 @@ import argparse
 import ast
 import glob
 import json
-import os
+import sys, os
 import shutil
 
 from pdf2image import convert_from_path
@@ -12,6 +12,8 @@ from utils import *
 from api.gemini import *
 from api.mistral import *
 
+parent = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(parent)
 from convert.malin_json_to_html import *
 
 def get_api_client(api_name: str):
