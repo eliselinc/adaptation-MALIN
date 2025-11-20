@@ -55,6 +55,7 @@ python3 adapt/main.py mistral CacheIntrus html --ex_id A_P66Ex2   # Traite un ex
 
 **Organisation d'un répertoire (1 répertoire = 1 manuel)**
 
+Données :
 ```yaml
 exercices            # Répertoire global (par défaut 'exercices' à la racine de adaptation-MALIN)
 |
@@ -62,7 +63,20 @@ exercices            # Répertoire global (par défaut 'exercices' à la racine 
 |   ├── *.txt        # Exercices individuels au format TXT
 |   ├── *.pdf        # Exercices individuels au format PDF (pas nécessaire sauf si modèle multimodal comme Pixtral)
 |   ├── json/*.json  # Répertoire contenant les fichiers adaptés en JSON MALIN
-|   └── html/*.html  # Répertoire contenant les fichiers adaptés en HTML Cahiers Fantastiques
+|   ├── html/*.html  # Répertoire contenant les fichiers adaptés en HTML MALIN
+|   └── cartable/*.html  # Répertoire contenant les fichiers adaptés en HTML (Cahiers Fantastiques)
 ├── CM
 └── ... (autres types d'adaptations)
+```
+
+Prompts :
+```yaml
+adapt
+|
+└── prompts_json         # 1 répertoire = 1 type d'adaptation
+    ├── CM.txt           # Prompt pour la catégorie CM
+    ├── examplesCM.json  # Exemples pour few-shot learning pour la catégorie CM
+    ├── CacheIntrus.txt
+    ├── examplesCacheIntrus.json
+    └── ... (autres prompts pour les autres catégories)
 ```

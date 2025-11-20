@@ -111,6 +111,9 @@ def main():
         output_dir = f"{ex_path}/{adaptation_type}/json"
         if not os.path.exists(output_dir):
             os.makedirs(output_dir, exist_ok=True)
+        html_dir = f"{ex_path}/{adaptation_type}/html"
+        if not os.path.exists(html_dir):
+            os.makedirs(html_dir, exist_ok=True)
 
     # INPUT EXERCISE(S)
     if ex_id is None:
@@ -149,10 +152,11 @@ def main():
             print(f"JSON content saved to {json_path}")
 
             # Convert to HTML
-            html_path = f"{output_dir}/{file_id}.html"
+            html_path = f"{html_dir}/{file_id}.html"
             with open(html_path, "w", encoding="utf-8") as f:
                 adaptation_html = exercise_to_html(adaptation_json)
                 f.write(adaptation_html)
             print(f"HTML content saved to {html_path}")
+
 if __name__ == "__main__":
     main()
