@@ -1,5 +1,4 @@
-{"CM":
-	[
+[
 		{"input":"Complète avec les adverbes\nheureusement, brusquement, beaucoup.\na. Sur l'autoroute les voitures se sont arrêtées ….\nb. … d'automobilistes ont été surpris.\nc. … il n'y a pas eu d'accrochage.",
 		 "output":{
   "format": "v1",
@@ -1342,5 +1341,4 @@
   "reference": null
 }
   }
-  ]
-}
+]

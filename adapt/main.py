@@ -59,7 +59,7 @@ def adapt_exercise(txt_path:str,
         # EXAMPLES FOR FEW-SHOT LEARNING according to the adaptation type
         with open(f"adapt/prompts_json/examples{adaptation_type}.json", 'r', encoding='utf-8') as file:
             # List of tuples (input, output)
-            examples = [(e['input'], e["output"]) for e in json.load(file)[adaptation_type]]
+            examples = [(e['input'], e["output"]) for e in json.load(file)]
             #TODO e["output"] doit être lu comme string
 
         # SEND TO LLM
@@ -127,36 +127,39 @@ def main():
 
     # ADAPT EXERCISE(S)
     for path in file_paths:
-        adaptation_json = adapt_exercise(txt_path=path,
-                                    adaptation_type=adaptation_type,
-                                    model=model,
-                                    format=format)
-        file_id = os.path.splitext(os.path.basename(path))[0] # Get ex id
-        if format=="html":
-            html_path = f"{output_dir}/{file_id}.html"
-            with open(html_path, "w", encoding="utf-8") as f:
-                f.write(adaptation_json)
-            print(f"HTML content saved to {html_path}")
-        elif format=="json":
-            if model=="gemini":
-                adaptation_json = parse_json_response(adaptation_json)
-            else:
-                # print(repr(adaptation_json[:200]))
-                adaptation_json = ast.literal_eval(adaptation_json)
-                # print(type(adaptation_json))
-                # print(adaptation_json.keys())
-                # adaptation_json = json.loads(adaptation_json)
-            json_path = f"{output_dir}/{file_id}.json"
-            with open(json_path, "w", encoding="utf-8") as f:
-                json.dump(adaptation_json, f, ensure_ascii=False, indent=2, separators=(",", ":"))
-            print(f"JSON content saved to {json_path}")
+        try:
+            adaptation_json = adapt_exercise(txt_path=path,
+                                        adaptation_type=adaptation_type,
+                                        model=model,
+                                        format=format)
+            file_id = os.path.splitext(os.path.basename(path))[0] # Get ex id
+            if format=="html":
+                html_path = f"{output_dir}/{file_id}.html"
+                with open(html_path, "w", encoding="utf-8") as f:
+                    f.write(adaptation_json)
+                print(f"HTML content saved to {html_path}")
+            elif format=="json":
+                if model=="gemini":
+                    adaptation_json = parse_json_response(adaptation_json)
+                else:
+                    # print(repr(adaptation_json[:200]))
+                    adaptation_json = ast.literal_eval(adaptation_json)
+                    # print(type(adaptation_json))
+                    # print(adaptation_json.keys())
+                    # adaptation_json = json.loads(adaptation_json)
+                json_path = f"{output_dir}/{file_id}.json"
+                with open(json_path, "w", encoding="utf-8") as f:
+                    json.dump(adaptation_json, f, ensure_ascii=False, indent=2, separators=(",", ":"))
+                print(f"JSON content saved to {json_path}")
 
-            # Convert to HTML
-            html_path = f"{html_dir}/{file_id}.html"
-            with open(html_path, "w", encoding="utf-8") as f:
-                adaptation_html = exercise_to_html(adaptation_json)
-                f.write(adaptation_html)
-            print(f"HTML content saved to {html_path}")
+                # Convert to HTML
+                html_path = f"{html_dir}/{file_id}.html"
+                with open(html_path, "w", encoding="utf-8") as f:
+                    adaptation_html = exercise_to_html(adaptation_json)
+                    f.write(adaptation_html)
+                print(f"HTML content saved to {html_path}")
+        except Exception as e:
+            print(f"Error processing {path}: {str(e)}")
 
 if __name__ == "__main__":
     main()
