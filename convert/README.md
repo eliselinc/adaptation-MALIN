@@ -3,47 +3,60 @@
 Convertir des exercices ou manuels adaptés d'un format à l'autre :
 - Cartable (Cahiers Fantastiques)
 - MALIN
+___
 
-## Running
+## Conversion d'un manuel entier
 
-**Commande**
+#### Conversion d'un manuel : HTML Cartable → MALIN
 
 Dans `adaptation-MALIN` :
 ```bash
-python3 convert/convert.py <input_textbook> <input_format>
+python3 convert/convert.py <textbook> --input_format cartable
 ```
 
-**Arguments**
-
-- Input textbook : 1 répertoire ou fichier correspondant à 1 manuel
-- Input format : `cartable` ou `malin` (ou rien)
-
-**Cas**
-- Si `cartable` : 
-  - Le dossier d'entrée contient un sous-dossier `json` avec les exercices .js au format Cartable
-  - Sorties :
+- Argument textbook : 1 répertoire correspondant à 1 manuel. Ce répertoire contient un sous-dossier `json` avec les exercices .js au format Cartable
+- Sorties :
     - Fichiers individuels JSON MALIN : `./<textbook>/json_malin/*.json`
     - Fichiers individuels HTML MALIN : `./<textbook>/html_malin/*.html`
     - Fichier HTML MALIN du manuel complet :`./<textbook>/html_malin/<textbook>.html`
-- Si `malin` : 
-  - Le dossier d'entrée contient un sous-dossier `json_malin` avec les exercices .json au format MALIN
-  - Sorties :
-    - Fichiers individuels HTML MALIN : `./<textbook>/html_malin/*.html`
-    - Fichier HTML MALIN du manuel complet :`./<textbook>/html_malin/<textbook>.html`
-- Si pas de format spécifié : 
-  - L'entrée est un unique fichier HTML du manuel au format MALIN 
-  - Sortie :
-    - Fichiers individuels JSON MALIN : `./<textbook>/json_malin/*.json`
 
-**Exemples d'exécution**
-
+Exemple d'exécution :
 ```bash
-python3 convert/convert.py ../data/manuel_CM1_francais --input_format cartable
-
-python3 convert/convert.py ../data/manuel_CM1_francais/textbook.html
+python3 convert/convert.py ./manuels/CM1_francais --input_format cartable
 ```
 
-**Organisation d'un répertoire (1 répertoire = 1 manuel)**
+#### Conversion d'un manuel : Exercices individuels JSON MALIN → HTML MALIN
+
+Dans `adaptation-MALIN` :
+```bash
+python3 convert/convert.py <input_textbook> --input_format malin
+```
+- Argument textbook : 1 répertoire correspondant à 1 manuel. Ce répertoire contient un sous-dossier `json_malin` avec les exercices .json au format MALIN
+- Sorties :
+    - Fichiers individuels HTML MALIN : `./<textbook>/html_malin/*.html`
+    - Fichier HTML MALIN du manuel complet :`./<textbook>/html_malin/<textbook>.html`
+
+Exemple d'exécution :
+```bash
+python3 convert/convert.py ./manuels/CM1_francais --input_format malin
+```
+
+#### Conversion d'un manuel : Manuel HTML MALIN autonome → Exercices individuels JSON MALIN
+
+Dans `adaptation-MALIN` :
+```bash
+python3 convert/convert.py <<textbook>/filename.html>
+```
+- Argument : un unique fichier HTML du manuel au format MALIN 
+- Sortie :
+    - Fichiers individuels JSON MALIN : `./<textbook>/json_malin/*.json`
+
+Exemple d'exécution :
+```bash
+python3 convert/convert.py ./manuels/CM1_francais/CM1_francais.html
+```
+
+#### Organisation du répertoire (1 répertoire = 1 manuel)
 
 ```yaml
 <textbook>
@@ -56,4 +69,27 @@ python3 convert/convert.py ../data/manuel_CM1_francais/textbook.html
  ├── json_malin         # JSON MALIN (fichiers individuels)
  ├── html_malin         # HTML MALIN (fichiers individuels)
  └── <textbook>.html    # HTML MALIN, manuel complet dans 1 fichier unique
+```
+___
+
+## Conversion d'un exercice spécifique
+
+#### Conversion d'un exercice spécifique : Exercice individuel JSON MALIN → Exercice individuel HTML MALIN
+
+Dans `adaptation-MALIN` :
+```bash
+python3 convert/convert.py <input_folder> --input_format malin --ex_id <ex_id>
+```
+- Arguments :
+  - Input folder : répertoire contenant un sous-dossier `json_malin` avec les exercices .json au format MALIN
+  - Input format : `malin`
+  - Ex id : identifiant de l'exercice (nom du fichier sans l'extension)
+- Sortie :
+    - Fichiers individuels JSON MALIN : `./<textbook>/json_malin/*.json`
+
+Exemple d'exécution :
+```bash
+python3 convert/convert.py ../manuels/CM1_francais --input_format malin --ex_id P7Ex2
+
+python3 convert/convert.py ../exercices/CM/ --input_format malin --ex_id CE2_P20Ex6
 ```

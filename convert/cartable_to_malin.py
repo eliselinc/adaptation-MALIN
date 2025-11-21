@@ -3,8 +3,8 @@ import json
 import re
 from collections import defaultdict
 from pathlib import Path
-from malin_json_to_html_v2 import exercise_to_html, textbook_to_html
-from malin_json_to_html_v2 import *
+from malin_json_to_html import exercise_to_html, textbook_to_html
+from malin_json_to_html import *
 # import (
 #     BaseModel, Exercise, Pages, Text, Whitespace, 
 #     EditableTextInput, 

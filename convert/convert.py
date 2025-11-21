@@ -15,9 +15,19 @@ def normalize_filename(raw_name: str) -> str:
     en 'P9Ex1.js' ou 'P7ExDefiLangue.js'
     """
     # The name is already normalized
-    match = re.match(r"P(\d+)E[Xx]([A-Za-z0-9]+)\.json$", raw_name)
+    match = re.match(r"^(.*?)P(\d+)E[Xx]([A-Za-z0-9]+)\.json$", raw_name)
     if match:
         return raw_name
+
+    pattern = r"^(.*?)P(\d+)(?:E[Xx])([A-Za-z0-9]+)?(_.*)?\.(jso?n?)$"
+    match = re.match(pattern, raw_name)
+    if not match:
+        raise ValueError(f"Nom de fichier inattendu : {raw_name}")
+    
+    prefix, p, ex, suffix, extension = match.groups()
+    print(prefix, p, ex, suffix, extension)
+    print(f"{prefix}P{p}Ex{ex}.{extension}")
+
     
     # # Parse and normalize
     # match = re.match(r"P(\d+)([A-Za-z0-9]+)_.*\.js$", raw_name)
@@ -25,9 +35,9 @@ def normalize_filename(raw_name: str) -> str:
     #     raise ValueError(f"Unexpected filename : {raw_name}")
     # p, ex = match.groups()
     # if ex.startswith("Ex"): ex = ex[2:]
-    match = re.match(r"P([A-Za-z0-9]+)E[Xx]([A-Za-z0-9]+)_.*\.js$", raw_name)
-    p, ex = match.groups()
-    return f"P{p}Ex{ex}.js"
+    # match = re.match(r"P([A-Za-z0-9]+)E[Xx]([A-Za-z0-9]+)_.*\.js$", raw_name)
+    # p, ex = match.groups()
+    return f"{prefix}P{p}Ex{ex}.{extension}"
     # return f"p{p}_ex{ex}.js"
 
 def extract_page_ex_num(filename: str, exname: bool=False):
@@ -50,10 +60,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert exercises")
     parser.add_argument("input_path", type=str, help="Repository input path, contains subfolders per textbook")
     parser.add_argument("--input_format", type=str, help="'cartable' or 'malin'", default=None)
+    parser.add_argument("--ex_id", type=str, help="Single exercise id to process", default=None)
     args = parser.parse_args()
 
     input_path = Path(args.input_path)
     input_format = args.input_format.lower() if args.input_format else None
+    ex_id = args.ex_id
     assert input_format in ["cartable", "malin", None], "Input format must be 'cartable' or 'malin' or None"
 
 
@@ -61,27 +73,24 @@ if __name__ == "__main__":
         assert input_path.suffix.lower() == ".html", "If no input format is provided, the input path must be a single HTML textbook file"
         # Crée un répertoire json_malin
         output_path = input_path.parent.joinpath("json_malin")
-        textbook_autonomous_html_file_to_directory(input_path, output_path)
-        print(f"\n**** Extracted exercises in {output_path}")
+        exercises = textbook_autonomous_html_file_to_directory(input_path, output_path)
+        print(f"\n**** Extracted {len(exercises)} exercises in {output_path}")
         exit(0)
 
     if input_format == "cartable":
-        # Input files : .js files in subdirectories in the json subfolders of Cartable format textbooks
+        # Input files : .js files in "json" subfolder of a Cartable format textbook
         assert input_path.joinpath("json").exists(), f"Input path must be a Cartable textbook folder and must contain a 'json' subfolder: {input_path}"
-        # if input_path.joinpath("json").exists():  # Process a single textbook
         js_files = list(input_path.glob("json/P*.js"))
         base_output_path = input_path.parent
-        # else: # Process all textbooks (subdirectories)
-        #     js_files = list(input_path.glob("*/json/P*.js"))
-        #     base_output_path = input_path
     elif input_format == "malin":
         assert input_path.joinpath("json_malin").exists(), f"Input path must contain a 'json_malin' subfolder: {input_path}"
-        # Input files: .json files in "json_malin" subfolders of textbooks
-        # if input_path.joinpath("json_malin").exists():  # Process a single textbook
-        js_files = list(input_path.glob("json_malin/P*.json"))
+        # Input files: .json files in "json_malin" subfolder
+        if ex_id is not None:
+            js_files = [input_path.joinpath("json_malin", f"{ex_id}.json")]
+        else:
+            js_files = list(input_path.glob("json_malin/P*.json"))
+            js_files = sorted(js_files, key=lambda p: extract_page_ex_num(p.name))
         base_output_path = input_path.parent
-    # js_files = sorted(js_files, key=lambda p: int(re.search(r"P|p(\d+)", p.name).group(1)) if re.search(r"P|p(\d+)", p.name) else 0) # Odre croissant par numéro de page
-    js_files = sorted(js_files, key=lambda p: extract_page_ex_num(p.name))
 
     textbooks = defaultdict(list)  # Group exercises by textbook name
     errors = []

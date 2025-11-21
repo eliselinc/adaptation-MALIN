@@ -280,7 +280,7 @@ def adapted_exercises_json_file_to_directory(input_json_file_name: str, output_d
     for exercise in exercises:
         with open(os.path.join(output_directory_name, f"{exercise['exerciseId']}.json"), "w", encoding="utf-8") as f:
             json.dump(exercise["adaptedExercise"], f, ensure_ascii=False, indent=2)
-
+    return exercises
 
 def textbook_autonomous_html_file_to_directory(input_html_file_name: str, output_directory_name: str) -> None:
     """
@@ -299,6 +299,7 @@ def textbook_autonomous_html_file_to_directory(input_html_file_name: str, output
     for exercise in exercises:
         with open(os.path.join(output_directory_name, f"{exercise['exerciseId']}.json"), "w", encoding="utf-8") as f:
             json.dump(exercise["adaptedExercise"], f, ensure_ascii=False, indent=2)
+    return exercises
 
 def load_exercise(input_path):
     with open(input_path, "r", encoding="utf-8") as f:
