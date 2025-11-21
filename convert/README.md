@@ -89,7 +89,7 @@ python3 convert/main.py <input_folder> --input_format malin --ex_id <ex_id>
 
 Exemple d'exécution :
 ```bash
-python3 convert/main.py ../manuels/CM1_francais --input_format malin --ex_id P7Ex2
+python3 convert/main.py ./manuels/CM1_francais --input_format malin --ex_id P7Ex2
 
-python3 convert/main.py ../exercices/CM/ --input_format malin --ex_id CE2_P20Ex6
+python3 convert/main.py ./exercices/CM/ --input_format malin --ex_id CE2_P20Ex6
 ```
