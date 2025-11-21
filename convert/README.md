@@ -11,7 +11,7 @@ ___
 
 Dans `adaptation-MALIN` :
 ```bash
-python3 convert/convert.py <textbook> --input_format cartable
+python3 convert/main.py <textbook> --input_format cartable
 ```
 
 - Argument textbook : 1 répertoire correspondant à 1 manuel. Ce répertoire contient un sous-dossier `json` avec les exercices .js au format Cartable
@@ -22,14 +22,14 @@ python3 convert/convert.py <textbook> --input_format cartable
 
 Exemple d'exécution :
 ```bash
-python3 convert/convert.py ./manuels/CM1_francais --input_format cartable
+python3 convert/main.py ./manuels/CM1_francais --input_format cartable
 ```
 
 #### Conversion d'un manuel : Exercices individuels JSON MALIN → HTML MALIN
 
 Dans `adaptation-MALIN` :
 ```bash
-python3 convert/convert.py <input_textbook> --input_format malin
+python3 convert/main.py <input_textbook> --input_format malin
 ```
 - Argument textbook : 1 répertoire correspondant à 1 manuel. Ce répertoire contient un sous-dossier `json_malin` avec les exercices .json au format MALIN
 - Sorties :
@@ -38,14 +38,14 @@ python3 convert/convert.py <input_textbook> --input_format malin
 
 Exemple d'exécution :
 ```bash
-python3 convert/convert.py ./manuels/CM1_francais --input_format malin
+python3 convert/main.py ./manuels/CM1_francais --input_format malin
 ```
 
 #### Conversion d'un manuel : Manuel HTML MALIN autonome → Exercices individuels JSON MALIN
 
 Dans `adaptation-MALIN` :
 ```bash
-python3 convert/convert.py <<textbook>/filename.html>
+python3 convert/main.py <<textbook>/filename.html>
 ```
 - Argument : un unique fichier HTML du manuel au format MALIN 
 - Sortie :
@@ -53,7 +53,7 @@ python3 convert/convert.py <<textbook>/filename.html>
 
 Exemple d'exécution :
 ```bash
-python3 convert/convert.py ./manuels/CM1_francais/CM1_francais.html
+python3 convert/main.py ./manuels/CM1_francais/CM1_francais.html
 ```
 
 #### Organisation du répertoire (1 répertoire = 1 manuel)
@@ -78,7 +78,7 @@ ___
 
 Dans `adaptation-MALIN` :
 ```bash
-python3 convert/convert.py <input_folder> --input_format malin --ex_id <ex_id>
+python3 convert/main.py <input_folder> --input_format malin --ex_id <ex_id>
 ```
 - Arguments :
   - Input folder : répertoire contenant un sous-dossier `json_malin` avec les exercices .json au format MALIN
@@ -89,7 +89,7 @@ python3 convert/convert.py <input_folder> --input_format malin --ex_id <ex_id>
 
 Exemple d'exécution :
 ```bash
-python3 convert/convert.py ../manuels/CM1_francais --input_format malin --ex_id P7Ex2
+python3 convert/main.py ../manuels/CM1_francais --input_format malin --ex_id P7Ex2
 
-python3 convert/convert.py ../exercices/CM/ --input_format malin --ex_id CE2_P20Ex6
+python3 convert/main.py ../exercices/CM/ --input_format malin --ex_id CE2_P20Ex6
 ```
