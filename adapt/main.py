@@ -26,9 +26,10 @@ def get_api_client(api_name: str):
 
 def adapt_exercise(txt_path:str,
                    adaptation_type:str,
+                   ex_id="",
                    model="mistral",
-                   format="html") -> str:
-    
+                   format="json") -> str:
+
     # API CLIENT
     api_client = get_api_client(model)
 
@@ -51,16 +52,17 @@ def adapt_exercise(txt_path:str,
         # READ SYSTEM MESSAGE according to the adaptation type
         if format == "html":
             initial_prompt_path = f"adapt/prompts_html/{adaptation_type}.txt"
+            examples = None
         elif format == "json":
             initial_prompt_path = f"adapt/prompts_json/{adaptation_type}.txt"
+
+            # EXAMPLES FOR FEW-SHOT LEARNING according to the adaptation type (JSON only)
+            with open(f"adapt/prompts_json/examples{adaptation_type}.json", 'r', encoding='utf-8') as file:
+                # List of tuples (input, output)
+                examples = [(e['input'], e["output"]) for e in json.load(file)]
+
         with open(initial_prompt_path, 'r', encoding='utf-8') as file:
             first_prompt = file.read()
-
-        # EXAMPLES FOR FEW-SHOT LEARNING according to the adaptation type
-        with open(f"adapt/prompts_json/examples{adaptation_type}.json", 'r', encoding='utf-8') as file:
-            # List of tuples (input, output)
-            examples = [(e['input'], e["output"]) for e in json.load(file)]
-            #TODO e["output"] doit être lu comme string
 
         # SEND TO LLM
         adaptated_ex = api_client.process_adaptation(model=model,
@@ -72,12 +74,11 @@ def adapt_exercise(txt_path:str,
                                                     )
 
         if format=="html":
-            pass
-            # title = get_title(ex_id, input_text, adaptated_ex)
-            # # print("Title:",title)
-            # id_cahier = get_id_cahier(ex_id=ex_id)
-            # print("Id cahier:",id_cahier)
-            # adaptated_ex = wrap_html(adaptated_ex, title, id_cahier)
+            title = get_title(ex_id, input_text, adaptated_ex)
+            # print("Title:",title)
+            id_cahier = get_id_cahier(ex_id=ex_id)
+            print("Id cahier:",id_cahier)
+            adaptated_ex = wrap_html(adaptated_ex, title, id_cahier)
         
         return adaptated_ex
 
@@ -96,22 +97,21 @@ def main():
     model = args.model
     adaptation_type = args.adaptation_type
     format = args.format.lower()
-    if format not in ["json", "html"]:
-        raise ValueError(f"Invalid format: '{format}'. Supported formats are 'json' and 'html'.")
+    assert format in ["json", "html"], f"Invalid format: '{format}'. Must be 'json' or 'html'."
     ex_path = args.ex_path
     ex_id = args.ex_id
 
     # CREATE OUTPUT DIRECTORY
     if format == "html":
-        output_dir = f"{ex_path}/{adaptation_type}/html"
+        output_dir = f"{ex_path}/{adaptation_type}/html_cartable"
         if not os.path.exists(output_dir):
             os.makedirs(output_dir, exist_ok=True)
             #TODO shutil.copytree(f"{ex_path}/html/communs/", os.path.join(output_dir, "communs"))
     elif format == "json":
-        output_dir = f"{ex_path}/{adaptation_type}/json"
+        output_dir = f"{ex_path}/{adaptation_type}/json_malin"
         if not os.path.exists(output_dir):
             os.makedirs(output_dir, exist_ok=True)
-        html_dir = f"{ex_path}/{adaptation_type}/html"
+        html_dir = f"{ex_path}/{adaptation_type}/html_malin"
         if not os.path.exists(html_dir):
             os.makedirs(html_dir, exist_ok=True)
 
@@ -127,39 +127,36 @@ def main():
 
     # ADAPT EXERCISE(S)
     for path in file_paths:
-        try:
-            adaptation_json = adapt_exercise(txt_path=path,
+        # try:
+        adaptation_json = adapt_exercise(txt_path=path,
                                         adaptation_type=adaptation_type,
                                         model=model,
-                                        format=format)
-            file_id = os.path.splitext(os.path.basename(path))[0] # Get ex id
-            if format=="html":
-                html_path = f"{output_dir}/{file_id}.html"
-                with open(html_path, "w", encoding="utf-8") as f:
-                    f.write(adaptation_json)
-                print(f"HTML content saved to {html_path}")
-            elif format=="json":
-                if model=="gemini":
-                    adaptation_json = parse_json_response(adaptation_json)
-                else:
-                    # print(repr(adaptation_json[:200]))
-                    adaptation_json = ast.literal_eval(adaptation_json)
-                    # print(type(adaptation_json))
-                    # print(adaptation_json.keys())
-                    # adaptation_json = json.loads(adaptation_json)
-                json_path = f"{output_dir}/{file_id}.json"
-                with open(json_path, "w", encoding="utf-8") as f:
-                    json.dump(adaptation_json, f, ensure_ascii=False, indent=2, separators=(",", ":"))
-                print(f"JSON content saved to {json_path}")
+                                        format=format,
+                                        ex_id=ex_id)
+        file_id = os.path.splitext(os.path.basename(path))[0] # Get ex id
+        if format=="html":
+            html_path = f"{output_dir}/{file_id}.html"
+            with open(html_path, "w", encoding="utf-8") as f:
+                f.write(adaptation_json)
+            print(f"HTML content saved to {html_path}")
+        elif format=="json":
+            if model=="gemini":
+                adaptation_json = parse_json_response(adaptation_json)
+            else:
+                adaptation_json = ast.literal_eval(adaptation_json)
+            json_path = f"{output_dir}/{file_id}.json"
+            with open(json_path, "w", encoding="utf-8") as f:
+                json.dump(adaptation_json, f, ensure_ascii=False, indent=2, separators=(",", ":"))
+            print(f"JSON content saved to {json_path}")
 
-                # Convert to HTML
-                html_path = f"{html_dir}/{file_id}.html"
-                with open(html_path, "w", encoding="utf-8") as f:
-                    adaptation_html = exercise_to_html(adaptation_json)
-                    f.write(adaptation_html)
-                print(f"HTML content saved to {html_path}")
-        except Exception as e:
-            print(f"Error processing {path}: {str(e)}")
+            # Convert to HTML
+            html_path = f"{html_dir}/{file_id}.html"
+            with open(html_path, "w", encoding="utf-8") as f:
+                adaptation_html = exercise_to_html(adaptation_json)
+                f.write(adaptation_html)
+            print(f"HTML content saved to {html_path}")
+        # except Exception as e:
+        #     print(f"Error processing {path}: {str(e)}")
 
 if __name__ == "__main__":
     main()

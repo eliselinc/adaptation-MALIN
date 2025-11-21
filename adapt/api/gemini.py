@@ -32,10 +32,10 @@ class GeminiAPI:
         )
 
         if format == "html":
-            user_prompt_text = "Adapt this exercise into clean, raw HTML content:\n"
+            # user_prompt_text = "Adapt this exercise into clean, raw HTML content:\n"
             user_prompt_text = "Adapte cet exercice en contenu HTML brut et propre suivant les instructions:\n"
         elif format == "json":
-            user_prompt_text = "Adapt this exercise into clean, raw JSON content:\n"
+            # user_prompt_text = "Adapt this exercise into clean, raw JSON content:\n"
             user_prompt_text = "Adapte cet exercice en contenu JSON brut et propre suivant les instructions:\n"
         else:
             raise ValueError(f"Unknown format: {format} ; must be 'html' or 'json'.")

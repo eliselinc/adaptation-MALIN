@@ -163,8 +163,9 @@ def get_page_and_exercise_numbers(ex_id:str) -> str:
 
 def get_id_cahier(ex_id:str) -> str:
     isbn_dict = {
+        # Add your own ISBN mappings here
         "magnardce1":"978-2-210-50537-7", "outilspourlefrancaisce1":"978-2-210-50537-7",
-        "magnardce2":"978-2-210-50538-4", "outilspourlefrancaisce2":"978-2-210-50538-4",
+        "magnardce2":"978-2-210-50538-4", "outilspourlefrancaisce2":"978-2-210-50538-4", "ce2":"978-2-210-50538-4",
         "magnardcm1":"978-2-210-50535-3", "outilspourlefrancaiscm1":"978-2-210-50535-3",
         "magnardcm2":"978-2-210-50536-0", "outilspourlefrancaiscm2":"978-2-210-50536-0",
         "adrien":"978-2-210-50208-6", "adrian":"978-2-210-50208-6",
@@ -175,7 +176,7 @@ def get_id_cahier(ex_id:str) -> str:
         isbn = isbn_dict[re.sub(r'[^a-z0-9]', '', ex_id.split("_")[0].lower())]
     except KeyError:
         isbn = ""
-        print(f"!!! WARNING: ISBN non trouvé pour le fichier '{ex_id}'. Renommez le fichier input suivant le format: '<manuel>_p<numero-de-page>ex<numero-d-exercice>.txt'")
+        print(f"!!! WARNING: ISBN non trouvé pour le fichier '{ex_id}'. Renommez le fichier input suivant le format: '<manuel>_P<numero-de-page>Ex<numero-d-exercice>.txt'")
 
     page_number, ex_number = get_page_and_exercise_numbers(ex_id)
     
